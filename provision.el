@@ -16,6 +16,13 @@
     (unless (package-installed-p (intern name))
      (with-current-buffer (url-retrieve-synchronously url)
        (package-install-from-buffer (package-buffer-info) 'single)))))
- '("http://www.emacswiki.org/emacs/download/tempbuf.el"))
+ '(
+   "http://www.emacswiki.org/emacs/download/tempbuf.el"
+   "https://raw.githubusercontent.com/osanai3/slice/master/slice.el"
+   "https://raw.githubusercontent.com/osanai3/swap-buffer/master/swap-buffer.el"
+   "https://raw.githubusercontent.com/osanai3/restore-window/master/restore-window.el"
+   "https://raw.githubusercontent.com/osanai3/relocate-window/master/relocate-window.el"
+   )
+ )
 
 ;;(eval-current-buffer)

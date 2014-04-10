@@ -109,8 +109,6 @@
 (require 'magit)
 (require 'magit-blame)
 (global-set-key (kbd "M-S") 'magit-status)
-(global-set-key (kbd "M-B") 'magit-blame-mode)
-(global-set-key (kbd "M-L") 'magit-file-log)
 
 (require 'tempbuf)
 (setq tempbuf-minimum-timeout (* 60 60 24 7))
@@ -174,3 +172,10 @@
 (setq google-translate-default-source-language "en")
 (setq google-translate-default-target-language "ja")
 (global-set-key "\C-ct" 'google-translate-at-point)
+
+(require 'relocate-window)
+(require 'slice)
+(require 'swap-buffer)
+(global-set-key (kbd "M-B") 'swap-buffer)
+(require 'restore-window)
+(global-set-key (kbd "C-x 1") 'restore-window-delete-other-windows-or-restore-window)
