@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
 (line-number-mode t)
@@ -179,3 +180,14 @@
 (global-set-key (kbd "M-B") 'swap-buffer)
 (require 'restore-window)
 (global-set-key (kbd "C-x 1") 'restore-window-delete-other-windows-or-restore-window)
+(require 'dimensional-command)
+(dimensional-command-register
+ (mapcar
+  (lambda (l) (mapcar (lambda (list) (lambda () (relocate-window-split-window (lambda () (delete-other-windows) (slice-h list))))) l))
+  '(
+    ((1 1) (2 1))
+    ((1 1 1) (2 (2 1)))
+    )
+  ))
+(global-set-key (kbd "C-x 2") (dimensional-command-invoke-command 1))
+(global-set-key (kbd "C-x 3") (dimensional-command-invoke-command 0))

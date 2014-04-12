@@ -22,6 +22,7 @@
    "https://raw.githubusercontent.com/osanai3/swap-buffer/master/swap-buffer.el"
    "https://raw.githubusercontent.com/osanai3/restore-window/master/restore-window.el"
    "https://raw.githubusercontent.com/osanai3/relocate-window/master/relocate-window.el"
+   "https://raw.githubusercontent.com/osanai3/dimensional-command/master/dimensional-command.el"
    )
  )
 
