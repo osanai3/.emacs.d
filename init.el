@@ -9,7 +9,6 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "C-o") 'other-window)
 (set-face-background 'mode-line "color-18")
 (set-face-foreground 'mode-line "color-124")
 (set-face-bold-p 'mode-line t)
