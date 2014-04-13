@@ -181,7 +181,7 @@
 (require 'restore-window)
 (global-set-key (kbd "C-x 1") 'restore-window-delete-other-windows-or-restore-window)
 (require 'dimensional-command)
-(dimensional-command-register
+(dimensional-command-register-global
  (mapcar
   (lambda (l) (mapcar (lambda (list) (lambda () (relocate-window-split-window (lambda () (delete-other-windows) (slice-h list))))) l))
   '(
