@@ -17,6 +17,7 @@
 (global-auto-revert-mode t)
 (transient-mark-mode -1)
 (setq ispell-program-name "aspell")
+(set-face-background 'highlight "color-233")
 
 (push (expand-file-name "~/.emacs.d/auto-install/") load-path)
 (let ((default-directory (expand-file-name "~/.emacs.d/elpa")))
@@ -107,9 +108,19 @@
             )
 )
 
+(require 'diff-mode)
+(set-face-background 'diff-header nil)
+(set-face-background 'diff-file-header nil)
+(set-face-background 'diff-added nil)
+(set-face-foreground 'diff-added "green")
+(set-face-background 'diff-removed nil)
+(set-face-foreground 'diff-removed "red")
+
 (require 'magit)
 (require 'magit-blame)
 (global-set-key (kbd "M-S") 'magit-status)
+(set-face-background 'magit-log-head-label-remote nil)
+(set-face-background 'magit-log-head-label-local nil)
 
 (require 'tempbuf)
 (setq tempbuf-minimum-timeout (* 60 60 24 7))
