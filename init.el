@@ -196,6 +196,7 @@
  (mapcar
   (lambda (l) (mapcar (lambda (list) (lambda () (relocate-window-split-window (lambda () (delete-other-windows) (slice-h list))))) l))
   '(
+    ((1))
     ((1 1) (2 1))
     ((1 1 1) (2 (2 1)))
     )
