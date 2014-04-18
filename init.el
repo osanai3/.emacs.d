@@ -17,7 +17,7 @@
 (global-auto-revert-mode t)
 (transient-mark-mode -1)
 (setq ispell-program-name "aspell")
-(set-face-background 'highlight "color-233")
+(set-face-background 'secondary-selection "color-233")
 
 (push (expand-file-name "~/.emacs.d/auto-install/") load-path)
 (let ((default-directory (expand-file-name "~/.emacs.d/elpa")))
