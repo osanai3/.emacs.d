@@ -203,3 +203,5 @@
   ))
 (global-set-key (kbd "C-x 2") (dimensional-command-invoke-command 1))
 (global-set-key (kbd "C-x 3") (dimensional-command-invoke-command 0))
+
+(desktop-save-mode 1)
