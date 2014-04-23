@@ -205,9 +205,9 @@
 (setq eshell-prompt-function
       (lambda ()
         (concat
-         (concat user-login-name "@" (car (split-string system-name "\\.")))
-         " " (abbreviate-file-name (eshell/pwd))
-         (when (vc-git-root (eshell/pwd)) (concat " (" (car (vc-git-branches)) ")"))
+         (propertize (concat user-login-name "@" (car (split-string system-name "\\."))) 'face '(foreground-color . "green"))
+         (propertize (concat " " (abbreviate-file-name (eshell/pwd))) 'face '(foreground-color . "yellow"))
+         (when (vc-git-root (eshell/pwd)) (propertize (concat " (" (car (vc-git-branches)) ")") 'face '(foreground-color . "cyan")))
          "\n"
          (if (= (user-uid) 0) "# " "$ ")
          )))
