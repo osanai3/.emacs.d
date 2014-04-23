@@ -8,6 +8,8 @@
 (setq inhibit-splash-screen t)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(push '(background-color . "black") default-frame-alist)
+(push '(foreground-color . "white") default-frame-alist)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (set-face-background 'mode-line "#000087")
 (set-face-foreground 'mode-line "#af0000")
@@ -212,9 +214,7 @@
          (if (= (user-uid) 0) "# " "$ ")
          )))
 (setq eshell-prompt-regexp "^[#$] ")
-
-(push '(background-color . "black") default-frame-alist)
-(push '(foreground-color . "white") default-frame-alist)
+(setq eshell-highlight-prompt nil)
 
 (defun eshell/img (filename)
  (propertize " " 'display (create-image (expand-file-name filename))))
