@@ -215,3 +215,6 @@
 
 (push '(background-color . "black") default-frame-alist)
 (push '(foreground-color . "white") default-frame-alist)
+
+(defun eshell/img (filename)
+ (propertize " " 'display (create-image (expand-file-name filename))))
