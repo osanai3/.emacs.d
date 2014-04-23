@@ -17,7 +17,6 @@
 (global-auto-revert-mode t)
 (transient-mark-mode -1)
 (setq ispell-program-name "aspell")
-(set-face-background 'secondary-selection "#121212")
 
 (push (expand-file-name "~/.emacs.d/auto-install/") load-path)
 (let ((default-directory (expand-file-name "~/.emacs.d/elpa")))
@@ -50,7 +49,6 @@
             (c-set-offset 'arglist-cont-nonempty' 4)
             (c-set-offset 'arglist-close' 0)
             ))
-(set-face-foreground 'font-lock-function-name-face "#005fff")
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
@@ -109,8 +107,6 @@
 )
 
 (require 'diff-mode)
-(set-face-background 'diff-header nil)
-(set-face-background 'diff-file-header nil)
 (set-face-background 'diff-added nil)
 (set-face-foreground 'diff-added "green")
 (set-face-background 'diff-removed nil)
@@ -119,8 +115,7 @@
 (require 'magit)
 (require 'magit-blame)
 (global-set-key (kbd "M-S") 'magit-status)
-(set-face-background 'magit-log-head-label-remote nil)
-(set-face-background 'magit-log-head-label-local nil)
+(set-face-background 'magit-item-highlight "#121212")
 
 (require 'tempbuf)
 (setq tempbuf-minimum-timeout (* 60 60 24 7))
@@ -206,6 +201,7 @@
 
 (desktop-save-mode 1)
 
+(require 'vc-git)
 (setq eshell-prompt-function
       (lambda ()
         (concat
@@ -216,3 +212,6 @@
          (if (= (user-uid) 0) "# " "$ ")
          )))
 (setq eshell-prompt-regexp "^[#$] ")
+
+(push '(background-color . "black") default-frame-alist)
+(push '(foreground-color . "white") default-frame-alist)
