@@ -205,3 +205,14 @@
 (global-set-key (kbd "C-x 3") (dimensional-command-invoke-command 0))
 
 (desktop-save-mode 1)
+
+(setq eshell-prompt-function
+      (lambda ()
+        (concat
+         (concat user-login-name "@" (car (split-string system-name "\\.")))
+         " " (abbreviate-file-name (eshell/pwd))
+         (when (vc-git-root (eshell/pwd)) (concat " (" (car (vc-git-branches)) ")"))
+         "\n"
+         (if (= (user-uid) 0) "# " "$ ")
+         )))
+(setq eshell-prompt-regexp "^[#$] ")
