@@ -166,7 +166,7 @@
 (require 'popwin)
 (push "*Backtrace*" popwin:special-display-config)
 (push '("*Buffer List*" :position left :width 25 :dedicated t) popwin:special-display-config)
-(popwin-mode 1)
+(setq display-buffer-function 'popwin:display-buffer)
 
 (require 'direx)
 (global-set-key (kbd "C-x C-j") 'direx:find-directory-reuse-other-window)
