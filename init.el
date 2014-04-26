@@ -114,10 +114,14 @@
 (set-face-background 'diff-removed nil)
 (set-face-foreground 'diff-removed "red")
 
+(require 'tramp)
+(setq-default tramp-remote-path (cons 'tramp-own-remote-path tramp-remote-path))
+
 (require 'magit)
 (require 'magit-blame)
 (global-set-key (kbd "M-S") 'magit-status)
 (set-face-background 'magit-item-highlight "#121212")
+(setq magit-git-executable "git")
 
 (require 'tempbuf)
 (setq tempbuf-minimum-timeout (* 60 60 24 7))
