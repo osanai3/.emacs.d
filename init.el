@@ -218,3 +218,5 @@
 
 (defun eshell/img (filename)
  (propertize " " 'display (create-image (expand-file-name filename))))
+(defun eshell/e (filename)
+  (find-file-other-window (expand-file-name filename)))
