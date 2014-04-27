@@ -15,7 +15,9 @@
   (let ((name (and (string-match "\\([a-z0-9-]+\\)\\.el" url) (match-string 1 url))))
     (unless (package-installed-p (intern name))
      (with-current-buffer (url-retrieve-synchronously url)
-       (package-install-from-buffer (package-buffer-info) 'single)))))
+       (if (version< emacs-version "24.3.90.1")
+           (package-install-from-buffer (package-buffer-info) 'single)
+         (package-install-from-buffer))))))
  '(
    "http://www.emacswiki.org/emacs/download/tempbuf.el"
    "https://raw.githubusercontent.com/m2ym/popwin-el/v0.6.2/popwin.el"
