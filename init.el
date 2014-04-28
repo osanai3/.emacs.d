@@ -167,18 +167,26 @@
 (require 'yascroll)
 (global-yascroll-bar-mode 1)
 
-(require 'popwin)
-(push "*Backtrace*" popwin:special-display-config)
-(push '("*Buffer List*" :position left :width 25 :dedicated t) popwin:special-display-config)
-(setq display-buffer-function 'popwin:display-buffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 
 (require 'direx)
 (global-set-key (kbd "C-x C-j") 'direx:find-directory-reuse-other-window)
 (setq direx:leaf-icon "* " direx:open-icon "\u25be " direx:closed-icon "\u25b8 ")
-(push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
 
-(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
-(push '("*Ibuffer*" :position left :width 25 :dedicated t) popwin:special-display-config)
+(require 'popwin)
+(setq popwin:special-display-config
+      '(
+        help-mode
+        grep-mode
+        (completion-list-mode :noselect t)
+        "*Shell Command Output*"
+        "*Backtrace*"
+        "*eshell*"
+        ("*Buffer List*" :position left :dedicated t)
+        ("*Ibuffer*" :position left :dedicated t)
+        (direx:direx-mode :position left :dedicated t)
+        ))
+(setq display-buffer-function 'popwin:display-buffer)
 
 (require 'google-translate)
 (require 'google-translate-default-ui)
@@ -224,3 +232,4 @@
  (propertize " " 'display (create-image (expand-file-name filename))))
 (defun eshell/e (filename)
   (find-file-other-window (expand-file-name filename)))
+(global-set-key (kbd "C-z") 'eshell)
