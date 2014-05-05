@@ -19,8 +19,8 @@
 (global-auto-revert-mode t)
 (transient-mark-mode -1)
 (setq ispell-program-name "aspell")
+(set-face-attribute 'default nil :height 150)
 
-(push (expand-file-name "~/.emacs.d/auto-install/") load-path)
 (let ((default-directory (expand-file-name "~/.emacs.d/elpa")))
  (normal-top-level-add-subdirs-to-load-path))
 
