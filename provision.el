@@ -7,7 +7,7 @@
 
 (mapc
  (lambda (package) (unless (package-installed-p package) (package-install package)))
- '(magit haskell-mode markdown-mode w3m php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode yascroll direx google-translate key-combo)
+ '(magit haskell-mode markdown-mode w3m php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo)
  )
 
 (mapc
@@ -20,12 +20,9 @@
          (package-install-from-buffer))))))
  '(
    "http://www.emacswiki.org/emacs/download/tempbuf.el"
-   "https://raw.githubusercontent.com/m2ym/popwin-el/v0.6.2/popwin.el"
-   "https://raw.githubusercontent.com/osanai3/slice/master/slice.el"
    "https://raw.githubusercontent.com/osanai3/swap-buffer/master/swap-buffer.el"
    "https://raw.githubusercontent.com/osanai3/restore-window/master/restore-window.el"
-   "https://raw.githubusercontent.com/osanai3/relocate-window/master/relocate-window.el"
-   "https://raw.githubusercontent.com/osanai3/dimensional-command/master/dimensional-command.el"
+   "https://raw.githubusercontent.com/osanai3/tempwin/master/tempwin.el"
    )
  )
 

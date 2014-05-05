@@ -164,29 +164,7 @@
 
 (require 'markdown-mode)
 
-(require 'yascroll)
-(global-yascroll-bar-mode 1)
-
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
-
-(require 'direx)
-(global-set-key (kbd "C-x C-j") 'direx:find-directory-reuse-other-window)
-(setq direx:leaf-icon "* " direx:open-icon "\u25be " direx:closed-icon "\u25b8 ")
-
-(require 'popwin)
-(setq popwin:special-display-config
-      '(
-        help-mode
-        grep-mode
-        (completion-list-mode :noselect t)
-        "*Shell Command Output*"
-        "*Backtrace*"
-        "*eshell*"
-        ("*Buffer List*" :position left :dedicated t)
-        ("*Ibuffer*" :position left :dedicated t)
-        (direx:direx-mode :position left :dedicated t)
-        ))
-(setq display-buffer-function 'popwin:display-buffer)
 
 (require 'google-translate)
 (require 'google-translate-default-ui)
@@ -194,24 +172,10 @@
 (setq google-translate-default-target-language "ja")
 (global-set-key "\C-ct" 'google-translate-at-point)
 
-(require 'relocate-window)
-(require 'slice)
 (require 'swap-buffer)
 (global-set-key (kbd "M-B") 'swap-buffer)
 (require 'restore-window)
 (global-set-key (kbd "C-x 1") 'restore-window-delete-other-windows-or-restore-window)
-(require 'dimensional-command)
-(dimensional-command-register-global
- (mapcar
-  (lambda (l) (mapcar (lambda (list) (lambda () (relocate-window-split-window (lambda () (delete-other-windows) (slice-h list))))) l))
-  '(
-    ((1))
-    ((1 1) (2 1))
-    ((1 1 1) (2 (2 1)))
-    )
-  ))
-(global-set-key (kbd "C-x 2") (dimensional-command-invoke-command 1))
-(global-set-key (kbd "C-x 3") (dimensional-command-invoke-command 0))
 
 (desktop-save-mode 1)
 
@@ -233,3 +197,8 @@
 (defun eshell/e (filename)
   (find-file-other-window (expand-file-name filename)))
 (global-set-key (kbd "C-z") 'eshell)
+
+(require 'tempwin)
+(push '("^\\*magit:.*\\*$" (side . above) (size . 10)) tempwin-display-buffer-config)
+(push '("^\\*Google Translate\\*$" (side . below) (size . 15) ignore-selected) tempwin-display-buffer-config)
+(tempwin-start)
