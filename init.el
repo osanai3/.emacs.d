@@ -202,3 +202,7 @@
 (push '("^\\*magit:.*\\*$" (side . above) (size . 10)) tempwin-display-buffer-config)
 (push '("^\\*Google Translate\\*$" (side . below) (size . 15) ignore-selected) tempwin-display-buffer-config)
 (tempwin-start)
+
+(defun eshell-change-path-to-remote ()
+  (setq eshell-path-env (shell-command-to-string "echo $PATH")))
+(add-hook 'eshell-pre-command-hook 'eshell-change-path-to-remote)
