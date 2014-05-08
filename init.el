@@ -198,6 +198,7 @@
   (find-file-other-window (expand-file-name filename)))
 (global-set-key (kbd "C-z") 'eshell)
 
+(setq help-window-select t)
 (require 'tempwin)
 (push '("^\\*magit:.*\\*$" (side . above) (size . 10)) tempwin-display-buffer-config)
 (push '("^\\*Google Translate\\*$" (side . below) (size . 15) ignore-selected) tempwin-display-buffer-config)
