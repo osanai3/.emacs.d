@@ -1,0 +1,1 @@
+alias git *env TERM=ansi git --no-pager $*
