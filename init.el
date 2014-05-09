@@ -206,7 +206,3 @@
 (defun eshell-change-path-to-remote ()
   (setq eshell-path-env (shell-command-to-string "echo $PATH")))
 (add-hook 'eshell-pre-command-hook 'eshell-change-path-to-remote)
-
-(let ((process-environment tramp-remote-process-environment))
-  (setenv "TERM" "ansi")
-  (setq tramp-remote-process-environment process-environment))
