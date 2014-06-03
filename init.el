@@ -185,7 +185,7 @@
         (concat
          (propertize (concat user-login-name "@" (car (split-string system-name "\\."))) 'face '(foreground-color . "green"))
          (propertize (concat " " (abbreviate-file-name (eshell/pwd))) 'face '(foreground-color . "yellow"))
-         (when (vc-git-root (eshell/pwd)) (propertize (concat " (" (car (vc-git-branches)) ")") 'face '(foreground-color . "cyan")))
+         (when (vc-git-root (eshell/pwd)) (propertize (concat " " (car (vc-git-branches))) 'face '(foreground-color . "cyan")))
          "\n"
          (if (= (user-uid) 0) "# " "$ ")
          )))

@@ -1,1 +1,2 @@
+alias cdp cd (with-current-buffer (window-buffer (tempwin-get-parent-window (selected-window))) default-directory)
 alias git *env TERM=ansi git --no-pager $*
