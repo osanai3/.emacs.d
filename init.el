@@ -13,7 +13,7 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (set-face-background 'mode-line "#000087")
 (set-face-foreground 'mode-line "#af0000")
-(set-face-bold-p 'mode-line t)
+(set-face-bold 'mode-line t)
 (set-face-background 'mode-line-inactive "#000087")
 (set-face-foreground 'mode-line-inactive "#008700")
 (global-auto-revert-mode t)
@@ -209,3 +209,11 @@
 (add-hook 'eshell-pre-command-hook 'eshell-change-path-to-remote)
 
 (setq shell-file-name "/bin/bash")
+
+(defun byte-compile-current-buffer ()
+  "`byte-compile' current buffer if it's emacs-lisp-mode."
+  (when (eq major-mode 'emacs-lisp-mode)
+    (eval-buffer)
+    (byte-compile-file buffer-file-name)))
+
+(add-hook 'after-save-hook 'byte-compile-current-buffer)
