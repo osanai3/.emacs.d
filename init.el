@@ -204,16 +204,18 @@
 (push '("^\\*Google Translate\\*$" (side . below) (size . 15) ignore-selected) tempwin-display-buffer-config)
 (tempwin-start)
 
-(defun eshell-change-path-to-remote ()
-  (setq eshell-path-env (shell-command-to-string "echo $PATH")))
-(add-hook 'eshell-pre-command-hook 'eshell-change-path-to-remote)
-
 (setq shell-file-name "/bin/bash")
 
 (defun byte-compile-current-buffer ()
   "`byte-compile' current buffer if it's emacs-lisp-mode."
-  (when (eq major-mode 'emacs-lisp-mode)
+  (when (and
+         (eq major-mode 'emacs-lisp-mode)
+         (not (string-match "-autoloads.el" buffer-file-name)))
     (eval-buffer)
     (byte-compile-file buffer-file-name)))
 
 (add-hook 'after-save-hook 'byte-compile-current-buffer)
+
+(require 'eshell-git)
+(push '("dc" . ("diff" "--cached")) eshell-git-alias-list)
+(eshell-git-start)
