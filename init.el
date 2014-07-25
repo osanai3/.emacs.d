@@ -5,6 +5,8 @@
 (column-number-mode t)
 (setq scroll-step 1)
 (menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 (setq inhibit-splash-screen t)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -101,7 +103,7 @@
             (key-combo-define-local (kbd "$") '("$" "$this" "$this->"))
             (key-combo-define-local (kbd ">") '(">" "->" " => "))
             (key-combo-define-local (kbd "@") '("@" "array(`!!')"))
-            (flymake-mode t)
+            ;(flymake-mode t)
             (setq require-final-newline t)
             (set-face-background 'flymake-errline nil)
             (set-face-underline 'flymake-errline t)
@@ -116,6 +118,7 @@
 
 (require 'tramp)
 (setq-default tramp-remote-path (cons 'tramp-own-remote-path tramp-remote-path))
+(setq-default tramp-use-ssh-controlmaster-options nil)
 
 (require 'magit)
 (require 'magit-blame)
