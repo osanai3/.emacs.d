@@ -221,4 +221,8 @@
 
 (require 'eshell-git)
 (push '("dc" . ("diff" "--cached")) eshell-git-alias-list)
+(push '("ad" . ("add" "-A")) eshell-git-alias-list)
+(push '("cm" . ("commit-no-edit" "-m")) eshell-git-alias-list)
+(push '("user.name" . "Koichi Osanai") eshell-git-command-config)
+(push '("user.email" . "osanai3@gmail.com") eshell-git-command-config)
 (eshell-git-start)
