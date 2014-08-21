@@ -205,6 +205,10 @@
 (require 'tempwin)
 (push '("^\\*magit:.*\\*$" (side . above) (size . 10)) tempwin-display-buffer-config)
 (push '("^\\*Google Translate\\*$" (side . below) (size . 15) ignore-selected) tempwin-display-buffer-config)
+(push  '("^\\*eshell\\*$"
+  (side . below)
+  (size . 15)
+  dedicated) tempwin-display-buffer-config)
 (tempwin-start)
 
 (setq shell-file-name "/bin/bash")

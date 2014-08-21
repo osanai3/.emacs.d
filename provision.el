@@ -27,4 +27,20 @@
    )
  )
 
+;; tar
+(mapc
+ (lambda (url)
+   (cl-destructuring-bind (name . version)
+       (and
+        (string-match "\\([a-z0-9-]+\\)-\\([0-9.]+\\)\\.tar" url)
+        (cons (match-string 1 url) (match-string 2 url)))
+     (unless (package-installed-p (intern name))
+       (let ((temp-file-name
+              (concat temporary-file-directory name "-" version ".tar")))
+         (url-copy-file url temp-file-name t)
+         (package-install-file temp-file-name)))))
+ '(
+   "https://github.com/osanai3/eshell-git/releases/download/0.1.2/eshell-git-0.1.tar"
+   ))
+
 ;;(eval-current-buffer)
