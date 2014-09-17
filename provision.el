@@ -40,7 +40,7 @@
          (url-copy-file url temp-file-name t)
          (package-install-file temp-file-name)))))
  '(
-   "https://github.com/osanai3/eshell-git/releases/download/0.1.2/eshell-git-0.1.tar"
+   "https://github.com/osanai3/eshell-git/releases/download/0.1.5/eshell-git-0.1.tar"
    ))
 
 ;;(eval-current-buffer)
