@@ -22,6 +22,7 @@
 (transient-mark-mode -1)
 (setq ispell-program-name "aspell")
 (set-face-attribute 'default nil :height 150)
+(setq load-prefer-newer t)
 
 (let ((default-directory (expand-file-name "~/.emacs.d/elpa")))
  (normal-top-level-add-subdirs-to-load-path))
@@ -120,18 +121,12 @@
 (setq-default tramp-remote-path (cons 'tramp-own-remote-path tramp-remote-path))
 (setq-default tramp-use-ssh-controlmaster-options nil)
 
-(require 'magit)
-(require 'magit-blame)
-(global-set-key (kbd "M-S") 'magit-status)
-(set-face-background 'magit-item-highlight "#121212")
-(setq magit-git-executable "git")
-
 (require 'tempbuf)
 (setq tempbuf-minimum-timeout (* 60 60 24 7))
 (add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
 (add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
 
-(setq browse-url-browser-function 'w3m-browse-url)
+(setq browse-url-browser-function 'eww-browse-url)
 
 (setq recentf-max-saved-items 1000)
 (require 'recentf-ext)
@@ -140,8 +135,6 @@
 (global-set-key (kbd "M-R") 'revert-buffer)
 (global-set-key (kbd "M-G") 'find-grep)
 (global-set-key (kbd "M-D") 'make-directory)
-(global-set-key (kbd "M-W") 'w3m-find-file)
-(global-set-key (kbd "M-Q") 'w3m-search)
 
 (ffap-bindings)
 
@@ -203,7 +196,6 @@
 
 (setq help-window-select t)
 (require 'tempwin)
-(push '("^\\*magit:.*\\*$" (side . above) (size . 10)) tempwin-display-buffer-config)
 (push '("^\\*Google Translate\\*$" (side . below) (size . 15) ignore-selected) tempwin-display-buffer-config)
 (push  '("^\\*eshell\\*$"
   (side . below)
@@ -212,16 +204,6 @@
 (tempwin-start)
 
 (setq shell-file-name "/bin/bash")
-
-(defun byte-compile-current-buffer ()
-  "`byte-compile' current buffer if it's emacs-lisp-mode."
-  (when (and
-         (eq major-mode 'emacs-lisp-mode)
-         (not (string-match "-autoloads.el" buffer-file-name)))
-    (eval-buffer)
-    (byte-compile-file buffer-file-name)))
-
-(add-hook 'after-save-hook 'byte-compile-current-buffer)
 
 (require 'eshell-git)
 (push '("dc" . ("diff" "--cached")) eshell-git-alias-list)

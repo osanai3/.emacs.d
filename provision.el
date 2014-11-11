@@ -7,7 +7,7 @@
 
 (mapc
  (lambda (package) (unless (package-installed-p package) (package-install package)))
- '(magit haskell-mode markdown-mode w3m php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo)
+ '(haskell-mode markdown-mode php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo)
  )
 
 (mapc
@@ -40,7 +40,7 @@
          (url-copy-file url temp-file-name t)
          (package-install-file temp-file-name)))))
  '(
-   "https://github.com/osanai3/eshell-git/releases/download/0.1.5/eshell-git-0.1.tar"
+   "https://github.com/osanai3/eshell-git/releases/download/0.1.7/eshell-git-0.1.tar"
    ))
 
 ;;(eval-current-buffer)
