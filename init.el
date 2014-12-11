@@ -90,7 +90,6 @@
   (key-combo-define-local (kbd "=") '(" = " " == " " === " "="))
   )
 (defun my-key-combo-others ()
-  (key-combo-define-local (kbd ",") '(", " ","))
   (key-combo-define-local (kbd "\\") '("\\" "function "))
   (key-combo-define-local (kbd "<") '("<" "return "))
   )
@@ -192,6 +191,8 @@
  (propertize " " 'display (create-image (expand-file-name filename))))
 (defun eshell/e (filename)
   (find-file-other-window (expand-file-name filename)))
+(defun eshell/! (&rest command)
+  (shell-command-to-string ((lambda (strings) (substring (mapconcat (lambda (line) (concat " " line)) strings "") 1)) command)))
 (global-set-key (kbd "C-z") 'eshell)
 
 (setq help-window-select t)
