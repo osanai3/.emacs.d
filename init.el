@@ -23,6 +23,8 @@
 (setq ispell-program-name "aspell")
 (set-face-attribute 'default nil :height 150)
 (setq load-prefer-newer t)
+(global-set-key (kbd "s-+") 'text-scale-increase)
+(global-set-key (kbd "s--") 'text-scale-decrease)
 
 (let ((default-directory (expand-file-name "~/.emacs.d/elpa")))
  (normal-top-level-add-subdirs-to-load-path))
@@ -208,3 +210,9 @@
 (push '("user.name" . "Koichi Osanai") eshell-git-command-config)
 (push '("user.email" . "osanai3@gmail.com") eshell-git-command-config)
 (eshell-git-start)
+
+(require 'vagrant-tramp)
+(vagrant-tramp-enable)
+
+(require 'eshell-tree)
+(fset 'eshell/tree (symbol-function 'eshell-tree))

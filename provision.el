@@ -7,7 +7,7 @@
 
 (mapc
  (lambda (package) (unless (package-installed-p package) (package-install package)))
- '(haskell-mode markdown-mode php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo)
+ '(haskell-mode markdown-mode php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo vagrant-tramp)
  )
 
 (mapc
@@ -24,6 +24,7 @@
    "https://raw.githubusercontent.com/osanai3/restore-window/master/restore-window.el"
    "https://raw.githubusercontent.com/osanai3/tempwin/master/tempwin.el"
    "https://raw.githubusercontent.com/osanai3/eshell-git/master/eshell-git.el"
+   "https://raw.githubusercontent.com/osanai3/eshell-tree/master/eshell-tree.el"
    )
  )
 
