@@ -150,9 +150,13 @@
             (local-unset-key (kbd "C-a"))
             (local-unset-key (kbd "C-e"))
             (flymake-mode t)
-            (setq require-final-newline t)
-            )
+            (setq require-final-newline t))
 )
+
+(add-hook 'javascript-mode-hook
+          (lambda ()
+            (when (equal (file-name-extension (buffer-file-name)) "json")
+              (setq js-indent-level 2))))
 
 (require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -216,3 +220,8 @@
 
 (require 'eshell-tree)
 (fset 'eshell/tree (symbol-function 'eshell-tree))
+
+(add-hook 'html-mode-hook
+          (lambda ()
+            (set (make-local-variable 'sgml-basic-offset) 4)))
+(push '("\\.twig$" . html-mode) auto-mode-alist)
