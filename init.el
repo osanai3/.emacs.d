@@ -147,16 +147,17 @@
             (my-key-combo-quote)
             (my-key-combo-operator)
             (my-key-combo-others)
+            (key-combo-define-local (kbd ">") '(">" " => "))
             (local-unset-key (kbd "C-a"))
             (local-unset-key (kbd "C-e"))
             (flymake-mode t)
             (setq require-final-newline t))
 )
 
-(add-hook 'javascript-mode-hook
+(add-hook 'js-mode-hook
           (lambda ()
             (when (equal (file-name-extension (buffer-file-name)) "json")
-              (setq js-indent-level 2))))
+              (setq-local js-indent-level 2))))
 
 (require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
