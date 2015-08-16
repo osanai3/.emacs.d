@@ -23,7 +23,6 @@
    "https://raw.githubusercontent.com/osanai3/swap-buffer/master/swap-buffer.el"
    "https://raw.githubusercontent.com/osanai3/restore-window/master/restore-window.el"
    "https://raw.githubusercontent.com/osanai3/tempwin/master/tempwin.el"
-   "https://raw.githubusercontent.com/osanai3/eshell-git/master/eshell-git.el"
    "https://raw.githubusercontent.com/osanai3/eshell-tree/master/eshell-tree.el"
    )
  )
