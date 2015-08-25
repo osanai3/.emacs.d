@@ -188,7 +188,7 @@
 (setq eshell-prompt-function
       (lambda ()
         (concat
-         (propertize (concat user-login-name "@" (car (split-string system-name "\\."))) 'face '(foreground-color . "green"))
+         (propertize (format-time-string "%Y/%m/%d(%a) %T") 'face '(foreground-color . "green"))
          (propertize (concat " " (abbreviate-file-name (eshell/pwd))) 'face '(foreground-color . "yellow"))
          (when (vc-git-root (eshell/pwd)) (propertize (concat " " (car (vc-git-branches))) 'face '(foreground-color . "cyan")))
          "\n"
