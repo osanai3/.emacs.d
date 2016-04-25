@@ -120,11 +120,6 @@
 (setq-default tramp-remote-path (cons 'tramp-own-remote-path tramp-remote-path))
 (setq-default tramp-use-ssh-controlmaster-options nil)
 
-(require 'tempbuf)
-(setq tempbuf-minimum-timeout (* 60 60 24 7))
-(add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
-(add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
-
 (setq browse-url-browser-function 'eww-browse-url)
 
 (setq recentf-max-saved-items 1000)

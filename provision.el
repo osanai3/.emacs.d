@@ -1,6 +1,6 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
 (package-initialize)
 (package-refresh-contents)
@@ -19,7 +19,6 @@
            (package-install-from-buffer (package-buffer-info) 'single)
          (package-install-from-buffer))))))
  '(
-   "http://www.emacswiki.org/emacs/download/tempbuf.el"
    "https://raw.githubusercontent.com/osanai3/swap-buffer/master/swap-buffer.el"
    "https://raw.githubusercontent.com/osanai3/restore-window/master/restore-window.el"
    "https://raw.githubusercontent.com/osanai3/tempwin/master/tempwin.el"
