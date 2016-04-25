@@ -31,6 +31,13 @@
 (global-set-key (kbd "s-{") (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "s-r") 'revert-buffer)
 
+(unless (file-exists-p "~/.emacs.d/elpa")
+  (with-current-buffer (generate-new-buffer "provision.el")
+    (insert-file-contents-literally "~/.emacs.d/provision.el")
+    (eval-current-buffer)
+    )
+  )
+
 (let ((default-directory (expand-file-name "~/.emacs.d/elpa")))
  (normal-top-level-add-subdirs-to-load-path))
 
