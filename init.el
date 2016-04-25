@@ -85,10 +85,6 @@
     (key-combo-define-local (kbd "[") '("[`!!']" "["))
     (key-combo-define-local (kbd "[]") "[]")
     ))
-(defun my-key-combo-quote ()
-  (key-combo-define-local (kbd "\"") '("\"`!!'\""))
-  (key-combo-define-local (kbd "'") '("'`!!''"))
-  )
 (defun my-key-combo-operator ()
   (key-combo-define-local (kbd "+=") " += ")
   (key-combo-define-local (kbd "-=") " -= ")
@@ -102,7 +98,6 @@
 (add-hook 'php-mode-hook
           (lambda ()
             (my-key-combo-paren)
-            (my-key-combo-quote)
             (my-key-combo-operator)
             (my-key-combo-others)
             (key-combo-define-local (kbd "$") '("$" "$this" "$this->"))
@@ -147,7 +142,6 @@
 (add-hook 'js2-mode-hook
           (lambda ()
             (my-key-combo-paren)
-            (my-key-combo-quote)
             (my-key-combo-operator)
             (my-key-combo-others)
             (key-combo-define-local (kbd ">") '(">" " => "))
@@ -161,6 +155,8 @@
           (lambda ()
             (when (equal (file-name-extension (buffer-file-name)) "json")
               (setq-local js-indent-level 2))))
+(setq-default js-indent-level 2)
+(setq-default js2-basic-offset 2)
 
 (require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -203,7 +199,25 @@
   (find-file-other-window (expand-file-name filename)))
 (defun eshell/! (&rest command)
   (shell-command-to-string ((lambda (strings) (substring (mapconcat (lambda (line) (concat " " line)) strings "") 1)) command)))
-(global-set-key (kbd "C-z") 'eshell)
+(defun eshell-sequential-command (&optional arg)
+  (interactive "P")
+  (if (derived-mode-p 'eshell-mode)
+      (if arg
+          (switch-to-buffer
+           (with-current-buffer
+               (if (numberp arg)
+                   (get-buffer-create (format "%s<%d>" eshell-buffer-name arg))
+                 (generate-new-buffer eshell-buffer-name))
+             (eshell-mode)
+             (current-buffer)
+             )
+           )
+        (switch-to-buffer
+         (find-if
+          (lambda (buf) (with-current-buffer buf (derived-mode-p 'eshell-mode)))
+          (reverse (buffer-list)))))
+    (eshell arg)))
+(global-set-key (kbd "C-z") 'eshell-sequential-command)
 
 (setq help-window-select t)
 (require 'tempwin)
