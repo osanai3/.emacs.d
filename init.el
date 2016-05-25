@@ -247,3 +247,6 @@
 (push '("\\.twig$" . html-mode) auto-mode-alist)
 
 (require 'restart-emacs)
+
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
