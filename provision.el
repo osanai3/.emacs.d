@@ -7,7 +7,7 @@
 
 (mapc
  (lambda (package) (unless (package-installed-p package) (package-install package)))
- '(haskell-mode markdown-mode php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo vagrant-tramp)
+ '(haskell-mode markdown-mode php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo vagrant-tramp restart-emacs)
  )
 
 (mapc

@@ -245,3 +245,5 @@
           (lambda ()
             (set (make-local-variable 'sgml-basic-offset) 4)))
 (push '("\\.twig$" . html-mode) auto-mode-alist)
+
+(require 'restart-emacs)
