@@ -1,13 +1,12 @@
 (progn
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
   (package-initialize)
   (package-refresh-contents))
 
 (mapc
  (lambda (package) (unless (package-installed-p package) (package-install package)))
- '(haskell-mode markdown-mode php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo vagrant-tramp restart-emacs exec-path-from-shell)
+ '(haskell-mode markdown-mode php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo vagrant-tramp restart-emacs exec-path-from-shell purescript-mode)
  )
 
 (mapc
@@ -15,9 +14,7 @@
   (let ((name (and (string-match "\\([a-z0-9-]+\\)\\.el" url) (match-string 1 url))))
     (unless (package-installed-p (intern name))
      (with-current-buffer (url-retrieve-synchronously url)
-       (if (version< emacs-version "24.3.90.1")
-           (package-install-from-buffer (package-buffer-info) 'single)
-         (package-install-from-buffer))))))
+       (package-install-from-buffer)))))
  '(
    "https://raw.githubusercontent.com/osanai3/swap-buffer/master/swap-buffer.el"
    "https://raw.githubusercontent.com/osanai3/restore-window/master/restore-window.el"
