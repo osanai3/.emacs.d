@@ -140,6 +140,7 @@
 (ffap-bindings)
 
 (require 'js2-mode)
+(setq js2-include-node-externs t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
           (lambda ()
@@ -250,3 +251,5 @@
 
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
+
+(require 'purescript-mode)
