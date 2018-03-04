@@ -57,7 +57,6 @@
 (setq flymake-run-in-place nil)
 
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
-(push '("\\.php5?$" . php-mode) auto-mode-alist)
 
 (setq-default tab-width 4 indent-tabs-mode nil)
 (add-hook 'php-mode-hook
