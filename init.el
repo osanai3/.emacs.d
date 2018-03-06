@@ -233,6 +233,7 @@
 (push '("ad" . ("add" "-A")) eshell-git-alias-list)
 (push '("user.name" . "Koichi Osanai") eshell-git-command-config)
 (push '("user.email" . "osanai3@gmail.com") eshell-git-command-config)
+(push '("diff.noprefix" . "true") eshell-git-command-config)
 (eshell-git-start)
 
 (require 'vagrant-tramp)
