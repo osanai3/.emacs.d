@@ -264,3 +264,5 @@
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 (setq auto-mode-alist
       (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+
+(add-to-list 'auto-mode-alist '("\\.emacs-pager$" . emacs-pager-mode))
