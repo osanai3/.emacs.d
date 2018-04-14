@@ -1,4 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
+
+;(package-initialize)
+
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
 (line-number-mode t)
@@ -40,6 +43,10 @@
 
 (let ((default-directory (expand-file-name "~/.emacs.d/elpa")))
  (normal-top-level-add-subdirs-to-load-path))
+
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 (require 'whitespace)
 (setq whitespace-style '(face tabs spaces trailing empty))
