@@ -226,7 +226,6 @@
           (lambda (buf) (with-current-buffer buf (derived-mode-p 'eshell-mode)))
           (reverse (buffer-list)))))
     (eshell arg)))
-(global-set-key (kbd "C-z") 'eshell-sequential-command)
 
 (setq help-window-select t)
 (require 'tempwin)
@@ -271,3 +270,6 @@
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
 (setq multi-term-program-switches "--login")
+
+(global-set-key (kbd "C-z") 'multi-term-next)
+(push '("s-t" . multi-term) term-bind-key-alist)
