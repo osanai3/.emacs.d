@@ -6,7 +6,7 @@
 
 (mapc
  (lambda (package) (unless (package-installed-p package) (package-install package)))
- '(haskell-mode markdown-mode php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo vagrant-tramp restart-emacs exec-path-from-shell purescript-mode csharp-mode quelpa)
+ '(haskell-mode markdown-mode php-mode sequential-command smart-tab recentf-ext js2-mode coffee-mode google-translate key-combo vagrant-tramp restart-emacs exec-path-from-shell purescript-mode csharp-mode multi-term)
  )
 
 (mapc
@@ -20,6 +20,7 @@
    "https://raw.githubusercontent.com/osanai3/restore-window/master/restore-window.el"
    "https://raw.githubusercontent.com/osanai3/tempwin/master/tempwin.el"
    "https://raw.githubusercontent.com/osanai3/eshell-tree/master/eshell-tree.el"
+   "https://raw.githubusercontent.com/osanai3/pipe-to-emacsclient/master/pipe-to-emacsclient.el"
    )
  )
 
@@ -38,9 +39,5 @@
  '(
    "https://github.com/osanai3/eshell-git/releases/download/0.1.7/eshell-git-0.1.tar"
    ))
-
-(require 'quelpa)
-(setq quelpa-checkout-melpa-p nil)
-(quelpa '(emacs-pager :repo "mbriggs/emacs-pager" :fetcher github))
 
 ;;(eval-current-buffer)

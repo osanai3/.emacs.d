@@ -265,4 +265,9 @@
 (setq auto-mode-alist
       (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
-(add-to-list 'auto-mode-alist '("\\.emacs-pager$" . emacs-pager-mode))
+(require 'pipe-to-emacsclient)
+(add-hook 'find-file-hook 'pipe-to-emacsclient-format)
+
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")
+(setq multi-term-program-switches "--login")
