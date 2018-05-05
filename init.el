@@ -273,3 +273,4 @@
 
 (global-set-key (kbd "C-z") 'multi-term-next)
 (push '("s-t" . multi-term) term-bind-key-alist)
+(push '("C-h" . term-send-backspace) term-bind-key-alist)
