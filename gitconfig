@@ -1,0 +1,15 @@
+[user]
+    name = Koichi Osanai
+    email = osanai3@gmail.com
+[diff]
+    noprefix = true
+[alias]
+    st = status
+    ci = commit
+    di = diff
+    co = checkout
+    dc = diff --cached
+[status]
+    short = true
+[pager]
+    branch = false

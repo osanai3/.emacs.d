@@ -3,3 +3,5 @@
 !provision.el
 !.gitignore
 !eshell/alias
+!bash_profile
+!gitconfig
