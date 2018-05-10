@@ -190,42 +190,6 @@
 (desktop-save-mode 1)
 
 (require 'vc-git)
-(setq eshell-prompt-function
-      (lambda ()
-        (concat
-         (propertize (format-time-string "%Y/%m/%d(%a) %T") 'face '(foreground-color . "green"))
-         (propertize (concat " " (abbreviate-file-name (eshell/pwd))) 'face '(foreground-color . "yellow"))
-         (when (vc-git-root (eshell/pwd)) (propertize (concat " " (car (vc-git-branches))) 'face '(foreground-color . "cyan")))
-         "\n"
-         (if (= (user-uid) 0) "# " "$ ")
-         )))
-(setq eshell-prompt-regexp "^[#$] ")
-(setq eshell-highlight-prompt nil)
-
-(defun eshell/img (filename)
- (propertize " " 'display (create-image (expand-file-name filename))))
-(defun eshell/e (filename)
-  (find-file-other-window (expand-file-name filename)))
-(defun eshell/! (&rest command)
-  (shell-command-to-string ((lambda (strings) (substring (mapconcat (lambda (line) (concat " " line)) strings "") 1)) command)))
-(defun eshell-sequential-command (&optional arg)
-  (interactive "P")
-  (if (derived-mode-p 'eshell-mode)
-      (if arg
-          (switch-to-buffer
-           (with-current-buffer
-               (if (numberp arg)
-                   (get-buffer-create (format "%s<%d>" eshell-buffer-name arg))
-                 (generate-new-buffer eshell-buffer-name))
-             (eshell-mode)
-             (current-buffer)
-             )
-           )
-        (switch-to-buffer
-         (find-if
-          (lambda (buf) (with-current-buffer buf (derived-mode-p 'eshell-mode)))
-          (reverse (buffer-list)))))
-    (eshell arg)))
 
 (setq help-window-select t)
 (require 'tempwin)
@@ -233,20 +197,6 @@
 (tempwin-start)
 
 (setq shell-file-name "/bin/bash")
-
-(require 'eshell-git)
-(push '("dc" . ("diff" "--cached")) eshell-git-alias-list)
-(push '("ad" . ("add" "-A")) eshell-git-alias-list)
-(push '("user.name" . "Koichi Osanai") eshell-git-command-config)
-(push '("user.email" . "osanai3@gmail.com") eshell-git-command-config)
-(push '("diff.noprefix" . "true") eshell-git-command-config)
-(eshell-git-start)
-
-(require 'vagrant-tramp)
-(vagrant-tramp-enable)
-
-(require 'eshell-tree)
-(fset 'eshell/tree (symbol-function 'eshell-tree))
 
 (add-hook 'html-mode-hook
           (lambda ()
@@ -274,3 +224,17 @@
 (global-set-key (kbd "C-z") 'multi-term-next)
 (push '("s-t" . multi-term) term-bind-key-alist)
 (push '("C-h" . term-send-backspace) term-bind-key-alist)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (pipe-to-emacsclient tempwin restore-window swap-buffer multi-term csharp-mode purescript-mode exec-path-from-shell restart-emacs key-combo google-translate coffee-mode js2-mode recentf-ext smart-tab sequential-command php-mode markdown-mode haskell-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
