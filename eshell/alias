@@ -1,3 +1,0 @@
-alias cd~ cd (concat (car (split-string default-directory ":/")) ":~")
-alias cd/ cd (concat (car (split-string default-directory ":/")) ":/")
-alias cdp cd (with-current-buffer (window-buffer (tempwin-get-parent-window (selected-window))) default-directory)
