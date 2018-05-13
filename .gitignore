@@ -3,4 +3,5 @@
 !provision.el
 !.gitignore
 !bash_profile
+!bashrc
 !gitconfig
