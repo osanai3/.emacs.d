@@ -2,7 +2,9 @@ alias e='emacsclient -n'
 DATETIME="\[\e[0;32m\]\D{%F(%a) %T}\[\e[m\]"
 CWD="\[\e[0;33m\]\w\[\e[m\]"
 GIT_BRANCH="\[\e[0;36m\]\$(git symbolic-ref --short HEAD 2> /dev/null)\[\e[m\]"
-export PS1="$DATETIME $CWD $GIT_BRANCH\n$ "
+GIT_DIFF="\[\e[0;31m\]\$(if git rev-parse --show-toplevel > /dev/null 2>&1; then git diff --quiet || echo '*'; fi)\[\e[m\]"
+GIT_DIFF_CACHED="\[\e[0;32m\]\$(if git rev-parse --show-toplevel > /dev/null 2>&1; then git diff --cached --quiet || echo '*'; fi)\[\e[m\]"
+export PS1="$DATETIME $CWD $GIT_BRANCH $GIT_DIFF$GIT_DIFF_CACHED\n$ "
 trap 'export PIPE_TO_EMACSCLIENT_COMMAND="$BASH_COMMAND"' DEBUG
 
 _xdiscard() {
