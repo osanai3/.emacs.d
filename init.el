@@ -221,3 +221,4 @@
 (define-key term-raw-map "\C-x" nil)
 (define-key term-raw-map "\M-x" nil)
 (setq explicit-shell-file-name (executable-find "bash"))
+(global-set-key (kbd "C-z") (lambda () (interactive) (term explicit-shell-file-name)))
