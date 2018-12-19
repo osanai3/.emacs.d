@@ -23,4 +23,4 @@
    )
  )
 
-;;(eval-current-buffer)
+;;(eval-buffer)
