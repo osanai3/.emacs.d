@@ -224,4 +224,7 @@
 (global-set-key (kbd "C-z") (lambda () (interactive) (term explicit-shell-file-name)))
 
 (require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.ya?ml$'" . yaml-mode))
+
+(require 'typescript-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx?$" . typescript-mode))
