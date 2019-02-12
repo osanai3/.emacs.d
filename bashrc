@@ -1,10 +1,16 @@
 alias e='emacsclient -n'
 DATETIME="\[\e[0;32m\]\D{%F(%a) %T}\[\e[m\]"
 CWD="\[\e[0;33m\]\w\[\e[m\]"
-GIT_BRANCH="\[\e[0;36m\]\$(git symbolic-ref --short HEAD 2> /dev/null)\[\e[m\]"
-GIT_DIFF="\[\e[0;31m\]\$(if git rev-parse --show-toplevel > /dev/null 2>&1; then git diff --quiet || echo '*'; fi)\[\e[m\]"
-GIT_DIFF_CACHED="\[\e[0;32m\]\$(if git rev-parse --show-toplevel > /dev/null 2>&1; then git diff --cached --quiet || echo '*'; fi)\[\e[m\]"
-export PS1="$DATETIME $CWD $GIT_BRANCH $GIT_DIFF$GIT_DIFF_CACHED\n$ "
+git-prompt() {
+    if git rev-parse --is-inside-work-tree &> /dev/null
+    then
+        HEAD="$(git symbolic-ref --short -q HEAD || echo \[$(git name-rev --name-only --always HEAD)\])"
+        echo -en "\001\e[0;36m\002$HEAD\001\e[m\002 "
+        git diff --cached --quiet || echo -en '\001\e[0;32m\002*\001\e[m\002'
+        test ! -n "$(git ls-files -o --exclude-standard)" && git diff --quiet || echo -en '\001\e[0;31m\002*\001\e[m\002'
+    fi
+}
+export PS1="$DATETIME $CWD \$(git-prompt)\n$ "
 trap 'export PIPE_TO_EMACSCLIENT_COMMAND="$BASH_COMMAND"' DEBUG
 
 _xdiscard() {
