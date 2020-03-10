@@ -37,7 +37,7 @@
 (unless (file-exists-p "~/.emacs.d/elpa")
   (with-current-buffer (generate-new-buffer "provision.el")
     (insert-file-contents-literally "~/.emacs.d/provision.el")
-    (eval-current-buffer)
+    (eval-buffer)
     )
   )
 
