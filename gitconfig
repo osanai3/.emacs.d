@@ -9,6 +9,7 @@
     di = diff
     co = checkout
     dc = diff --cached
+    br = branch --format=%(refname:short)
 [status]
     short = true
 [pager]
