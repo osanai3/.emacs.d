@@ -1,5 +1,6 @@
 # shellcheck shell=bash
 alias e='emacsclient -n'
+alias ep="PIPE_TO_EMACSCLIENT_COMMAND=ep emacs --batch -l ~/.emacs.d/elpa/pipe-to-emacsclient-0.1/pipe-to-emacsclient.el --eval='(pipe-to-emacsclient-batch)'"
 DATETIME="\[\e[0;32m\]\D{%F(%a) %T}\[\e[m\]"
 CWD="\[\e[0;33m\]\w\[\e[m\]"
 git-prompt() {
