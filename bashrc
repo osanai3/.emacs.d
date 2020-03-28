@@ -5,7 +5,7 @@ alias em="osascript -e 'activate application \"Emacs\"'"
 DATETIME="\[\e[0;32m\]\D{%F(%a) %T}\[\e[m\]"
 CWD="\[\e[0;33m\]\w\[\e[m\]"
 git-prompt() {
-    if git rev-parse --is-inside-work-tree &> /dev/null
+    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = true ]
     then
         HEAD="$(git symbolic-ref --short -q HEAD || echo \["$(git name-rev --name-only --always HEAD)"\])"
         echo -en "\001\e[0;36m\002$HEAD\001\e[m\002 "
