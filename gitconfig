@@ -1,14 +1,12 @@
 [user]
     name = Koichi Osanai
     email = osanai3@gmail.com
-[diff]
-    noprefix = true
 [alias]
     st = status
     ci = commit
-    di = diff
+    di = diff --no-prefix
     co = checkout
-    dc = diff --cached
+    dc = diff --cached --no-prefix
     br = branch --format=%(refname:short)
 [status]
     short = true
