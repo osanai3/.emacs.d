@@ -2,6 +2,7 @@
 alias e='emacsclient -n'
 alias ep="PIPE_TO_EMACSCLIENT_COMMAND=ep emacs --batch -l ~/.emacs.d/elpa/pipe-to-emacsclient-0.1/pipe-to-emacsclient.el --eval='(pipe-to-emacsclient-batch)'"
 alias em="osascript -e 'activate application \"Emacs\"'"
+
 DATETIME="\[\e[0;32m\]\D{%F(%a) %T}\[\e[m\]"
 CWD="\[\e[0;33m\]\w\[\e[m\]"
 git-prompt() {
@@ -34,3 +35,9 @@ _xyank() {
 bind -m emacs -x '"\C-u": _xdiscard'
 bind -m emacs -x '"\C-k": _xkill'
 bind -m emacs -x '"\C-y": _xyank'
+
+shopt -s globstar
+
+hex() {
+    hexdump -v -e '/1 "%02x"'
+}
