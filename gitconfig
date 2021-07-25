@@ -4,9 +4,9 @@
 [alias]
     st = status
     ci = commit
-    di = diff --no-prefix
+    di = !git diff --name-only | fzf --preview='git -c color.ui=always diff {}' | xargs git diff
     co = checkout
-    dc = diff --cached --no-prefix
+    dc = !git diff --cached --name-only | fzf --preview='git -c color.ui=always diff --cached {}' | xargs git diff --cached
     br = branch --format=%(refname:short)
 [status]
     short = true
