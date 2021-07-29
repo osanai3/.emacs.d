@@ -229,3 +229,24 @@
 (require 'typescript-mode)
 (setq-default typescript-indent-level 2)
 (add-to-list 'auto-mode-alist '("\\.tsx?$" . typescript-mode))
+
+(require 'neotree)
+(setq-default neo-show-updir-line t)
+(setq-default neo-show-hidden-files t)
+(setq-default neo-autorefresh nil)
+(setq-default neo-smart-open t)
+(global-set-key (kbd "C-x C-b") 'neotree-toggle)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(treemacs neotree pipe-to-emacsclient tempwin restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode csharp-mode purescript-mode exec-path-from-shell restart-emacs key-combo google-translate coffee-mode js2-mode recentf-ext smart-tab sequential-command php-mode markdown-mode haskell-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
