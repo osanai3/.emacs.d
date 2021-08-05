@@ -237,6 +237,11 @@
 (setq-default neo-smart-open t)
 (global-set-key (kbd "C-x C-b") 'neotree-toggle)
 
+(defadvice neo-open-file (after auto-hide (full-path &optional arg))
+  "hide neotree after open file"
+  (neotree-hide))
+(ad-activate 'neo-open-file)
+
 (require 'projectile)
 
 (custom-set-variables
