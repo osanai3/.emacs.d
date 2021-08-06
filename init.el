@@ -230,10 +230,12 @@
 (setq-default typescript-indent-level 2)
 (add-to-list 'auto-mode-alist '("\\.tsx?$" . typescript-mode))
 
-(setq-default neo-show-updir-line t)
-(setq-default neo-show-hidden-files t)
-(setq-default neo-autorefresh nil)
-(setq-default neo-smart-open t)
+(custom-set-variables
+ '(neo-show-updir-line t)
+ '(neo-show-hidden-files t)
+ '(neo-autorefresh nil)
+ '(neo-smart-open t)
+)
 (global-set-key (kbd "C-x C-b") 'neotree-toggle)
 (with-eval-after-load 'neotree
   (require 'projectile)
