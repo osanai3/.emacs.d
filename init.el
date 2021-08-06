@@ -85,9 +85,6 @@
 (require 'sequential-command-config)
 (sequential-command-setup-keys)
 
-(require 'smart-tab)
-(global-smart-tab-mode t)
-
 (defun my-key-combo-others ()
   (key-combo-define-local (kbd "\\") '("\\" "function "))
   (key-combo-define-local (kbd "<") '("<" "return "))
@@ -153,6 +150,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(browse-url-browser-function 'eww-browse-url)
  '(help-window-select t)
  '(js-indent-level 2)
  '(js2-basic-offset 2)
@@ -162,14 +160,12 @@
  '(neo-show-updir-line t)
  '(neo-smart-open t)
  '(package-selected-packages
-   '(projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode smart-tab sequential-command php-mode markdown-mode haskell-mode))
+   '(projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
+ '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(sgml-basic-offset 4)
  '(shell-file-name "/bin/bash")
- '(typescript-indent-level 2)
- '(browse-url-browser-function 'eww-browse-url)
- '(recentf-max-saved-items 1000)
- )
+ '(typescript-indent-level 2))
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
 
