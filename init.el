@@ -226,9 +226,8 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.ya?ml$'" . yaml-mode))
 
-(require 'typescript-mode)
-(setq-default typescript-indent-level 2)
-(add-to-list 'auto-mode-alist '("\\.tsx?$" . typescript-mode))
+(custom-set-variables '(typescript-indent-level 2))
+(add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
 (custom-set-variables
  '(neo-show-updir-line t)
