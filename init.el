@@ -27,6 +27,45 @@
 (global-set-key (kbd "s-{") (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "s-r") 'revert-buffer)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(browse-url-browser-function 'eww-browse-url)
+ '(help-window-select t)
+ '(js-indent-level 2)
+ '(js2-basic-offset 2)
+ '(js2-include-node-externs t)
+ '(neo-autorefresh nil)
+ '(neo-show-hidden-files t)
+ '(neo-show-updir-line t)
+ '(neo-smart-open t)
+ '(package-selected-packages
+   '(projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
+ '(recentf-max-saved-items 1000)
+ '(require-final-newline t)
+ '(sgml-basic-offset 4)
+ '(shell-file-name "/bin/bash")
+ '(typescript-indent-level 2)
+ '(uniquify-buffer-name-style 'post-forward-angle-brackets)
+ '(uniquify-ignore-buffers-re "*[^*]+*")
+ '(tab-width 4)
+ '(indent-tabs-mode nil)
+ '(whitespace-style '(face tabs spaces trailing empty))
+ '(whitespace-space-regexp "\\(\u3000+\\)")
+ '(scroll-step 1)
+ '(inhibit-splash-screen t)
+ '(make-backup-files nil)
+ '(auto-save-default nil)
+ '(revert-without-query '(".*"))
+ '(package-archives '(("melpa" . "https://melpa.org/packages/") ("gnu" . "https://elpa.gnu.org/packages/")))
+ )
+
+(unless (file-exists-p "~/.emacs.d/elpa")
+  (progn (package-refresh-contents) (package-install-selected-packages))
+  )
+
 (require 'server)
 (unless (server-running-p)
   (server-start))
@@ -107,41 +146,7 @@
 
 (global-set-key (kbd "C-z") (lambda () (interactive) (shell-command "hyper")))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(browse-url-browser-function 'eww-browse-url)
- '(help-window-select t)
- '(js-indent-level 2)
- '(js2-basic-offset 2)
- '(js2-include-node-externs t)
- '(neo-autorefresh nil)
- '(neo-show-hidden-files t)
- '(neo-show-updir-line t)
- '(neo-smart-open t)
- '(package-selected-packages
-   '(projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
- '(recentf-max-saved-items 1000)
- '(require-final-newline t)
- '(sgml-basic-offset 4)
- '(shell-file-name "/bin/bash")
- '(typescript-indent-level 2)
- '(uniquify-buffer-name-style 'post-forward-angle-brackets)
- '(uniquify-ignore-buffers-re "*[^*]+*")
- '(tab-width 4)
- '(indent-tabs-mode nil)
- '(whitespace-style '(face tabs spaces trailing empty))
- '(whitespace-space-regexp "\\(\u3000+\\)")
- '(scroll-step 1)
- '(inhibit-splash-screen t)
- '(make-backup-files nil)
- '(auto-save-default nil)
- '(revert-without-query '(".*"))
- )
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
-
 
 (global-set-key (kbd "C-x C-b") 'neotree-toggle)
 (with-eval-after-load 'neotree
