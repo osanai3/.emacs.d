@@ -196,19 +196,9 @@
 (push '("^\\*Google Translate\\*$" (side . below) (size . 15) ignore-selected) tempwin-display-buffer-config)
 (tempwin-start)
 
-(setq shell-file-name "/bin/bash")
-
-(add-hook 'html-mode-hook
-          (lambda ()
-            (set (make-local-variable 'sgml-basic-offset) 4)))
 (push '("\\.twig$" . html-mode) auto-mode-alist)
 
-(require 'restart-emacs)
-
-(require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
-
-(require 'purescript-mode)
 
 (require 'pipe-to-emacsclient)
 (add-hook 'find-file-hook 'pipe-to-emacsclient-format)
@@ -220,6 +210,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(shell-file-name "/bin/bash")
+ '(sgml-basic-offset 4)
  '(neo-autorefresh nil)
  '(neo-show-hidden-files t)
  '(neo-show-updir-line t)
