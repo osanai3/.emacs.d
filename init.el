@@ -236,6 +236,7 @@
 (setq-default neo-autorefresh nil)
 (setq-default neo-smart-open t)
 (global-set-key (kbd "C-x C-b") 'neotree-toggle)
+(define-key neotree-mode-map "\C-g" 'neotree-hide)
 
 (defadvice neo-open-file (after auto-hide (full-path &optional arg))
   "hide neotree after open file"
