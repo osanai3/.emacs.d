@@ -191,11 +191,6 @@
 
 (require 'vc-git)
 
-(setq help-window-select t)
-(require 'tempwin)
-(push '("^\\*Google Translate\\*$" (side . below) (size . 15) ignore-selected) tempwin-display-buffer-config)
-(tempwin-start)
-
 (push '("\\.twig$" . html-mode) auto-mode-alist)
 
 (exec-path-from-shell-initialize)
@@ -210,15 +205,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(shell-file-name "/bin/bash")
- '(sgml-basic-offset 4)
  '(neo-autorefresh nil)
  '(neo-show-hidden-files t)
  '(neo-show-updir-line t)
  '(neo-smart-open t)
  '(package-selected-packages
-   '(projectile neotree pipe-to-emacsclient tempwin restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo google-translate coffee-mode js2-mode recentf-ext smart-tab sequential-command php-mode markdown-mode haskell-mode))
- '(typescript-indent-level 2))
+   '(projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo google-translate coffee-mode js2-mode recentf-ext smart-tab sequential-command php-mode markdown-mode haskell-mode))
+ '(sgml-basic-offset 4)
+ '(shell-file-name "/bin/bash")
+ '(typescript-indent-level 2)
+ '(help-window-select t)
+ )
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
 
