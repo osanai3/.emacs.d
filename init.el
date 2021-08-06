@@ -210,31 +210,26 @@
 
 (require 'purescript-mode)
 
-(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-(setq auto-mode-alist
-      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
-
 (require 'pipe-to-emacsclient)
 (add-hook 'find-file-hook 'pipe-to-emacsclient-format)
 
-(require 'term)
-(define-key term-raw-map "\C-x" nil)
-(define-key term-raw-map "\M-x" nil)
-(setq explicit-shell-file-name (executable-find "bash"))
 (global-set-key (kbd "C-z") (lambda () (interactive) (shell-command "hyper")))
 
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.ya?ml$'" . yaml-mode))
-
-(custom-set-variables '(typescript-indent-level 2))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(neo-autorefresh nil)
+ '(neo-show-hidden-files t)
+ '(neo-show-updir-line t)
+ '(neo-smart-open t)
+ '(package-selected-packages
+   '(projectile neotree pipe-to-emacsclient tempwin restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo google-translate coffee-mode js2-mode recentf-ext smart-tab sequential-command php-mode markdown-mode haskell-mode))
+ '(typescript-indent-level 2))
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
-(custom-set-variables
- '(neo-show-updir-line t)
- '(neo-show-hidden-files t)
- '(neo-autorefresh nil)
- '(neo-smart-open t)
-)
+
 (global-set-key (kbd "C-x C-b") 'neotree-toggle)
 (with-eval-after-load 'neotree
   (require 'projectile)
@@ -246,13 +241,7 @@
   (neotree-hide))
 (ad-activate 'neo-open-file)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(projectile neotree pipe-to-emacsclient tempwin restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode csharp-mode purescript-mode exec-path-from-shell restart-emacs key-combo google-translate coffee-mode js2-mode recentf-ext smart-tab sequential-command php-mode markdown-mode haskell-mode)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
