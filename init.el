@@ -117,7 +117,6 @@
             (key-combo-define-local (kbd ">") '(">" "->" " => "))
             (key-combo-define-local (kbd "@") '("@" "array(`!!')"))
             ;(flymake-mode t)
-            (setq require-final-newline t)
             (set-face-background 'flymake-errline nil)
             (set-face-underline 'flymake-errline t)
             )
@@ -145,8 +144,6 @@
 
 (ffap-bindings)
 
-(require 'js2-mode)
-(setq js2-include-node-externs t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
           (lambda ()
@@ -156,31 +153,10 @@
             (key-combo-define-local (kbd ">") '(">" " => "))
             (local-unset-key (kbd "C-a"))
             (local-unset-key (kbd "C-e"))
-            (flymake-mode t)
-            (setq require-final-newline t))
+            (flymake-mode t))
 )
 
-(add-hook 'js-mode-hook
-          (lambda ()
-            (when (equal (file-name-extension (buffer-file-name)) "json")
-              (setq-local js-indent-level 2))))
-(setq-default js-indent-level 2)
-(setq-default js2-basic-offset 2)
-
-(require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
-(require 'coffee-mode)
-
-(require 'markdown-mode)
-
-(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
-
-(require 'google-translate)
-(require 'google-translate-default-ui)
-(setq google-translate-default-source-language "en")
-(setq google-translate-default-target-language "ja")
-(global-set-key "\C-ct" 'google-translate-at-point)
 
 (require 'swap-buffer)
 (global-set-key (kbd "M-B") 'swap-buffer)
@@ -189,7 +165,7 @@
 
 (desktop-save-mode 1)
 
-(require 'vc-git)
+(add-to-list 'vc-handled-backends 'Git)
 
 (push '("\\.twig$" . html-mode) auto-mode-alist)
 
@@ -205,17 +181,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(help-window-select t)
  '(neo-autorefresh nil)
  '(neo-show-hidden-files t)
  '(neo-show-updir-line t)
  '(neo-smart-open t)
  '(package-selected-packages
-   '(projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo google-translate coffee-mode js2-mode recentf-ext smart-tab sequential-command php-mode markdown-mode haskell-mode))
+   '(projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode recentf-ext smart-tab sequential-command php-mode markdown-mode haskell-mode))
  '(sgml-basic-offset 4)
  '(shell-file-name "/bin/bash")
  '(typescript-indent-level 2)
- '(help-window-select t)
- )
+ '(js-indent-level 2)
+ '(js2-basic-offset 2)
+ '(require-final-newline t)
+ '(js2-include-node-externs t)
+)
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
 
