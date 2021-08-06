@@ -48,39 +48,21 @@
 (unless (server-running-p)
   (server-start))
 
-(require 'whitespace)
-(setq whitespace-style '(face tabs spaces trailing empty))
-(setq whitespace-space-regexp "\\(\u3000+\\)")
-(set-face-foreground 'whitespace-tab "yellow")
-(set-face-background 'whitespace-tab nil)
-(set-face-underline  'whitespace-tab t)
-(set-face-background 'whitespace-space "red")
-(set-face-background 'whitespace-trailing "red")
-(set-face-background 'whitespace-empty "red")
+(with-eval-after-load 'whitespace
+  (set-face-foreground 'whitespace-tab "yellow")
+  (set-face-background 'whitespace-tab nil)
+  (set-face-underline  'whitespace-tab t)
+  (set-face-background 'whitespace-space "red")
+  (set-face-background 'whitespace-trailing "red")
+  (set-face-background 'whitespace-empty "red")
+)
 (global-whitespace-mode t)
 
 (show-paren-mode t)
 
-(setq flymake-run-in-place nil)
-
-(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
-
-(setq-default tab-width 4 indent-tabs-mode nil)
-(add-hook 'php-mode-hook
-          (lambda ()
-            (setq c-basic-offset 4)
-            (c-set-offset 'case-label' 4)
-            (c-set-offset 'arglist-intro' 4)
-            (c-set-offset 'arglist-cont-nonempty' 4)
-            (c-set-offset 'arglist-close' 0)
-            ))
-
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-(setq uniquify-ignore-buffers-re "*[^*]+*")
-
-(require 'dired)
-(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+(with-eval-after-load 'dired
+  (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+)
 
 (require 'sequential-command-config)
 (sequential-command-setup-keys)
@@ -96,9 +78,6 @@
             (key-combo-define-local (kbd ">") '(">" "->" " => "))
             (key-combo-define-local (kbd "@") '("@" "array(`!!')"))
             (key-combo-mode 1)
-            ;(flymake-mode t)
-            (set-face-background 'flymake-errline nil)
-            (set-face-underline 'flymake-errline t)
             )
 )
 
@@ -165,7 +144,14 @@
  '(require-final-newline t)
  '(sgml-basic-offset 4)
  '(shell-file-name "/bin/bash")
- '(typescript-indent-level 2))
+ '(typescript-indent-level 2)
+ '(uniquify-buffer-name-style 'post-forward-angle-brackets)
+ '(uniquify-ignore-buffers-re "*[^*]+*")
+ '(tab-width 4)
+ '(indent-tabs-mode nil)
+ '(whitespace-style '(face tabs spaces trailing empty))
+ '(whitespace-space-regexp "\\(\u3000+\\)")
+)
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
 
