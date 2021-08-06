@@ -132,14 +132,7 @@
 (setq-default tramp-remote-path (cons 'tramp-own-remote-path tramp-remote-path))
 (setq-default tramp-use-ssh-controlmaster-options nil)
 
-(setq browse-url-browser-function 'eww-browse-url)
-
-(setq recentf-max-saved-items 1000)
-(require 'recentf-ext)
-(global-set-key (kbd "M-F") 'recentf-open-files)
-
 (global-set-key (kbd "M-R") 'revert-buffer)
-(global-set-key (kbd "M-G") 'find-grep)
 (global-set-key (kbd "M-D") 'make-directory)
 
 (ffap-bindings)
@@ -182,20 +175,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(help-window-select t)
+ '(js-indent-level 2)
+ '(js2-basic-offset 2)
+ '(js2-include-node-externs t)
  '(neo-autorefresh nil)
  '(neo-show-hidden-files t)
  '(neo-show-updir-line t)
  '(neo-smart-open t)
  '(package-selected-packages
-   '(projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode recentf-ext smart-tab sequential-command php-mode markdown-mode haskell-mode))
+   '(projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode smart-tab sequential-command php-mode markdown-mode haskell-mode))
+ '(require-final-newline t)
  '(sgml-basic-offset 4)
  '(shell-file-name "/bin/bash")
  '(typescript-indent-level 2)
- '(js-indent-level 2)
- '(js2-basic-offset 2)
- '(require-final-newline t)
- '(js2-include-node-externs t)
-)
+ '(browse-url-browser-function 'eww-browse-url)
+ '(recentf-max-saved-items 1000)
+ )
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
 
