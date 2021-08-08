@@ -62,7 +62,13 @@
  '(package-archives '(("melpa" . "https://melpa.org/packages/") ("gnu" . "https://elpa.gnu.org/packages/")))
  )
 
+(defun package-install-from-my-github (package)
+  (let* ((name (symbol-name package))
+        (url (concat "https://raw.githubusercontent.com/osanai3/" name "/master/" name ".el")))
+    (with-current-buffer (url-retrieve-synchronously url) (package-install-from-buffer)))
+  )
 (unless (file-exists-p "~/.emacs.d/elpa")
+  (mapc 'package-install-from-my-github '(swap-buffer restore-window pipe-to-emacsclient))
   (progn (package-refresh-contents) (package-install-selected-packages))
   )
 
