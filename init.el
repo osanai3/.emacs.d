@@ -34,6 +34,7 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-default nil)
  '(browse-url-browser-function 'eww-browse-url)
+ '(desktop-restore-eager 10)
  '(help-window-select t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
