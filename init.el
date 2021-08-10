@@ -51,7 +51,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(icomplete-vertical consult projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
+   '(orderless icomplete-vertical consult projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -184,3 +184,4 @@
 (global-set-key (kbd "M-g M-g") 'consult-goto-line)
 (global-set-key (kbd "C-s") 'consult-isearch)
 (global-set-key (kbd "C-x b") 'consult-buffer)
+(setq completion-styles '(orderless))
