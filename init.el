@@ -52,17 +52,19 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(embark-consult embark marginalia orderless icomplete-vertical consult projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
+   '(vterm embark-consult embark marginalia orderless icomplete-vertical consult projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
  '(scroll-step 1)
  '(sgml-basic-offset 4)
- '(shell-file-name "/bin/bash")
+ '(shell-file-name "/usr/local/bin/bash")
  '(tab-width 4)
  '(typescript-indent-level 2)
  '(uniquify-buffer-name-style 'post-forward-angle-brackets nil (uniquify))
  '(uniquify-ignore-buffers-re "*[^*]+*")
+ '(vterm-keymap-exceptions
+   '("C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"))
  '(whitespace-space-regexp "\\(　+\\)")
  '(whitespace-style '(face tabs spaces trailing empty)))
 
