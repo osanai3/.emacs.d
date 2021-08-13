@@ -9,9 +9,9 @@ git-prompt() {
     if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = true ]
     then
         HEAD="$(git symbolic-ref --short -q HEAD || echo \["$(git name-rev --name-only --always HEAD)"\])"
-        echo -en "\001\e[0;36m\002$HEAD\001\e[m\002 "
+        printf %b "\001\e[0;36m\002$HEAD\001\e[m\002 "
         git diff --cached --quiet || echo -en '\001\e[0;32m\002*\001\e[m\002'
-        test ! -n "$(git ls-files -o --exclude-standard)" && git diff --quiet || echo -en '\001\e[0;31m\002*\001\e[m\002'
+        test ! -n "$(git ls-files -o --exclude-standard)" && git diff --quiet || printf %b '\001\e[0;31m\002*\001\e[m\002'
     fi
 }
 export PS1="$DATETIME $CWD \$(git-prompt)\n$ "
