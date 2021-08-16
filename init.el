@@ -52,7 +52,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(vterm embark-consult embark marginalia orderless icomplete-vertical consult projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
+   '(multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -64,7 +64,7 @@
  '(uniquify-buffer-name-style 'post-forward-angle-brackets nil (uniquify))
  '(uniquify-ignore-buffers-re "*[^*]+*")
  '(vterm-keymap-exceptions
-   '("C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"))
+   '("C-z" "C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"))
  '(whitespace-space-regexp "\\(　+\\)")
  '(whitespace-style '(face tabs spaces trailing empty)))
 
@@ -156,8 +156,6 @@
 (require 'pipe-to-emacsclient)
 (add-hook 'find-file-hook 'pipe-to-emacsclient-format)
 
-(global-set-key (kbd "C-z") (lambda () (interactive) (shell-command "hyper")))
-
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
 (global-set-key (kbd "C-x C-b") 'neotree-toggle)
@@ -192,3 +190,6 @@
 (with-eval-after-load 'consult
   (with-eval-after-load 'embark
     (require 'embark-consult)))
+(global-set-key (kbd "C-z") 'multi-vterm-dedicated-toggle)
+(with-eval-after-load 'multi-vterm
+  (define-key vterm-mode-map (kbd "C-g") 'multi-vterm-dedicated-close))
