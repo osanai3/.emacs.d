@@ -193,3 +193,7 @@
 (global-set-key (kbd "C-z") 'multi-vterm-dedicated-toggle)
 (with-eval-after-load 'multi-vterm
   (define-key vterm-mode-map (kbd "C-g") 'multi-vterm-dedicated-close))
+
+(with-eval-after-load 'flymake
+  (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+  (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
