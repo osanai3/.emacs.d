@@ -197,3 +197,15 @@
 (with-eval-after-load 'flymake
   (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
   (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
+
+(defun my-switch-to-tab (name)
+  "Switch to the tab by NAME with nice completion."
+  (interactive
+   (let* ((tabs (mapcar (lambda (tab)
+                                 (alist-get 'name tab))
+                               (funcall tab-bar-tabs-function))))
+     (list (completing-read "Switch to tab by name: "
+                            tabs nil t nil nil tabs))))
+  (tab-bar-switch-to-tab name))
+(with-eval-after-load 'tab-bar
+  (define-key tab-prefix-map (kbd "RET") 'my-switch-to-tab))
