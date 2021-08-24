@@ -102,18 +102,19 @@
 
 (defun my-key-combo-others ()
   "Define some shortcuts."
-  (key-combo-define-local (kbd "\\") '("\\" "function "))
-  (key-combo-define-local (kbd "<") '("<" "return "))
-  )
+  (if (fboundp 'key-combo-define-local)
+      (progn
+        (key-combo-define-local (kbd "\\") '("\\" "function "))
+        (key-combo-define-local (kbd "<") '("<" "return ")))))
 (add-hook 'php-mode-hook
           (lambda ()
             (my-key-combo-others)
-            (key-combo-define-local (kbd "$") '("$" "$this" "$this->"))
-            (key-combo-define-local (kbd ">") '(">" "->" " => "))
-            (key-combo-define-local (kbd "@") '("@" "array(`!!')"))
-            (key-combo-mode 1)
-            )
-)
+            (if (fboundp 'key-combo-define-local)
+                (progn
+                  (key-combo-define-local (kbd "$") '("$" "$this" "$this->"))
+                  (key-combo-define-local (kbd ">") '(">" "->" " => "))
+                  (key-combo-define-local (kbd "@") '("@" "array(`!!')"))))
+            (if (fboundp 'key-combo-mode) (key-combo-mode 1))))
 
 (with-eval-after-load 'diff-mode
   (set-face-background 'diff-added nil)
@@ -131,19 +132,18 @@
 (add-hook 'js2-mode-hook
           (lambda ()
             (my-key-combo-others)
-            (key-combo-define-local (kbd ">") '(">" " => "))
-            (key-combo-mode 1)
+            (if (fboundp 'key-combo-define-local) (key-combo-define-local (kbd ">") '(">" " => ")))
+            (if (fboundp 'key-combo-mode) (key-combo-mode 1))
             (local-unset-key (kbd "C-a"))
             (local-unset-key (kbd "C-e"))
-            (flymake-mode t))
-)
+            (flymake-mode t)))
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 (add-hook 'after-init-hook
           (lambda ()
             (require 'sequential-command-config)
-            (sequential-command-setup-keys)
+            (if (fboundp 'sequential-command-setup-keys) (sequential-command-setup-keys))
             (require 'swap-buffer)
             (global-set-key (kbd "M-B") 'swap-buffer)
             (require 'restore-window)
@@ -151,20 +151,20 @@
             (require 'pipe-to-emacsclient)
             (add-hook 'find-file-hook 'pipe-to-emacsclient-format)))
 
-
 (desktop-save-mode 1)
 
 (add-to-list 'vc-handled-backends 'Git)
 
 (push '("\\.twig$" . html-mode) auto-mode-alist)
 
-(exec-path-from-shell-initialize)
+(if (fboundp 'exec-path-from-shell-initialize) (exec-path-from-shell-initialize))
 
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
 (global-set-key (kbd "C-x C-b") 'neotree-toggle)
 (with-eval-after-load 'neotree
   (require 'projectile)
+  (defvar neotree-mode-map)
   (define-key neotree-mode-map "\C-g" 'neotree-hide)
 )
 
@@ -182,7 +182,8 @@
  )
 
 (icomplete-mode)
-(icomplete-vertical-mode)
+(if (fboundp 'icomplete-vertical-mode) (icomplete-vertical-mode))
+(defvar icomplete-minibuffer-map)
 (define-key icomplete-minibuffer-map "\t" 'icomplete-force-complete)
 (define-key icomplete-minibuffer-map "\C-n" 'icomplete-forward-completions)
 (define-key icomplete-minibuffer-map "\C-p" 'icomplete-backward-completions)
@@ -195,10 +196,13 @@
   (with-eval-after-load 'embark
     (require 'embark-consult)))
 (global-set-key (kbd "C-z") 'multi-vterm-dedicated-toggle)
+
 (with-eval-after-load 'multi-vterm
+  (defvar vterm-mode-map)
   (define-key vterm-mode-map (kbd "C-g") 'multi-vterm-dedicated-close))
 
 (with-eval-after-load 'flymake
+  (defvar flymake-mode-map)
   (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
   (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
 
