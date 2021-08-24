@@ -69,6 +69,7 @@
  '(whitespace-style '(face tabs spaces trailing empty)))
 
 (defun package-install-from-my-github (package)
+  "Install PACKAGE from my github."
   (let* ((name (symbol-name package))
         (url (concat "https://raw.githubusercontent.com/osanai3/" name "/master/" name ".el")))
     (with-current-buffer (url-retrieve-synchronously url) (package-install-from-buffer)))
@@ -95,13 +96,12 @@
 (show-paren-mode t)
 
 (with-eval-after-load 'dired
+  (defvar dired-mode-map)
   (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 )
 
-(require 'sequential-command-config)
-(sequential-command-setup-keys)
-
 (defun my-key-combo-others ()
+  "Define some shortcuts."
   (key-combo-define-local (kbd "\\") '("\\" "function "))
   (key-combo-define-local (kbd "<") '("<" "return "))
   )
@@ -140,10 +140,17 @@
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-(require 'swap-buffer)
-(global-set-key (kbd "M-B") 'swap-buffer)
-(require 'restore-window)
-(global-set-key (kbd "C-x 1") 'restore-window-delete-other-windows-or-restore-window)
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'sequential-command-config)
+            (sequential-command-setup-keys)
+            (require 'swap-buffer)
+            (global-set-key (kbd "M-B") 'swap-buffer)
+            (require 'restore-window)
+            (global-set-key (kbd "C-x 1") 'restore-window-delete-other-windows-or-restore-window)
+            (require 'pipe-to-emacsclient)
+            (add-hook 'find-file-hook 'pipe-to-emacsclient-format)))
+
 
 (desktop-save-mode 1)
 
@@ -152,9 +159,6 @@
 (push '("\\.twig$" . html-mode) auto-mode-alist)
 
 (exec-path-from-shell-initialize)
-
-(require 'pipe-to-emacsclient)
-(add-hook 'find-file-hook 'pipe-to-emacsclient-format)
 
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
 
@@ -165,7 +169,7 @@
 )
 
 (defadvice neo-open-file (after auto-hide (full-path &optional arg))
-  "hide neotree after open file"
+  "Hide neotree after open file."
   (neotree-hide))
 (ad-activate 'neo-open-file)
 
@@ -209,3 +213,8 @@
   (tab-bar-switch-to-tab name))
 (with-eval-after-load 'tab-bar
   (define-key tab-prefix-map (kbd "RET") 'my-switch-to-tab))
+
+(add-hook 'emacs-lisp-mode-hook 'flymake-mode)
+
+(provide 'init)
+;;; init.el ends here
