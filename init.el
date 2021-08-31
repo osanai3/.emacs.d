@@ -67,7 +67,10 @@
    '("C-z" "C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"))
  '(whitespace-space-regexp "\\(　+\\)")
  '(whitespace-style '(face tabs spaces trailing empty))
- '(display-buffer-alist '(("\\*vterm\\*" display-buffer-in-side-window (window-height . 20)))))
+ '(display-buffer-alist
+   '(("\\*vterm\\*" display-buffer-in-side-window (window-height . 20))
+     ("\\*Embark Actions\\*" display-buffer-in-side-window (side . right) (window-width . 80))
+     ("\\*Help\\*" display-buffer-in-side-window (side . right) (window-width . 80)))))
 
 (defun package-install-from-my-github (package)
   "Install PACKAGE from my github."
