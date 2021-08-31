@@ -66,7 +66,8 @@
  '(vterm-keymap-exceptions
    '("C-z" "C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"))
  '(whitespace-space-regexp "\\(　+\\)")
- '(whitespace-style '(face tabs spaces trailing empty)))
+ '(whitespace-style '(face tabs spaces trailing empty))
+ '(display-buffer-alist '(("\\*vterm\\*" display-buffer-in-side-window (window-height . 20)))))
 
 (defun package-install-from-my-github (package)
   "Install PACKAGE from my github."
@@ -195,11 +196,11 @@
 (with-eval-after-load 'consult
   (with-eval-after-load 'embark
     (require 'embark-consult)))
-(global-set-key (kbd "C-z") 'multi-vterm-dedicated-toggle)
+(global-set-key (kbd "C-z") 'vterm)
 
-(with-eval-after-load 'multi-vterm
+(with-eval-after-load 'vterm
   (defvar vterm-mode-map)
-  (define-key vterm-mode-map (kbd "C-g") 'multi-vterm-dedicated-close))
+  (define-key vterm-mode-map (kbd "C-g") 'delete-window))
 
 (with-eval-after-load 'flymake
   (defvar flymake-mode-map)
