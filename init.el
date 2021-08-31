@@ -224,5 +224,13 @@
 
 (add-hook 'emacs-lisp-mode-hook 'flymake-mode)
 
+(add-hook 'typescript-mode-hook 'eglot-ensure)
+
+(with-eval-after-load 'eglot
+  (defvar eglot-server-programs)
+  (push '(typescript-mode . ("typescript-language-server" "--stdio")) eglot-server-programs))
+
+(add-hook 'flymake-mode-hook 'company-mode)
+
 (provide 'init)
 ;;; init.el ends here
