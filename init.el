@@ -3,6 +3,7 @@
 (package-initialize)
 
 (set-language-environment "Japanese")
+(setenv "LANG" "ja_JP.UTF-8")
 (prefer-coding-system 'utf-8)
 (line-number-mode t)
 (column-number-mode t)
