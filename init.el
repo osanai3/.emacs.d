@@ -69,6 +69,7 @@
    '("C-z" "C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"))
  '(whitespace-space-regexp "\\(　+\\)")
  '(whitespace-style '(face tabs spaces trailing empty))
+ '(window-sides-vertical t)
  '(display-buffer-alist
    '(("\\*vterm\\*" display-buffer-in-side-window (window-height . 20))
      ("\\*Embark Actions\\*" display-buffer-in-side-window (side . right) (window-width . 80))
