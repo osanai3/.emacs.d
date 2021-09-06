@@ -42,6 +42,7 @@
  '(js-indent-level 2)
  '(js2-basic-offset 2)
  '(js2-include-node-externs t)
+ '(css-indent-offset 2)
  '(make-backup-files nil)
  '(marginalia-mode t)
  '(neo-autorefresh nil)
