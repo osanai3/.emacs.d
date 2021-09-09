@@ -155,8 +155,7 @@
             (global-set-key (kbd "M-B") 'swap-buffer)
             (require 'restore-window)
             (global-set-key (kbd "C-x 1") 'restore-window-delete-other-windows-or-restore-window)
-            (require 'pipe-to-emacsclient)
-            (add-hook 'find-file-hook 'pipe-to-emacsclient-format)))
+            (require 'pipe-to-emacsclient)))
 
 (desktop-save-mode 1)
 
