@@ -65,6 +65,7 @@
  '(typescript-indent-level 2)
  '(uniquify-buffer-name-style 'post-forward-angle-brackets nil (uniquify))
  '(uniquify-ignore-buffers-re "*[^*]+*")
+ '(view-read-only t)
  '(vterm-keymap-exceptions
    '("C-z" "C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"))
  '(whitespace-space-regexp "\\(　+\\)")
