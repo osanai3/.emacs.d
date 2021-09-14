@@ -1,6 +1,8 @@
 # shellcheck shell=bash
+export PAGER="emacs --batch -l ~/.emacs.d/elpa/pipe-to-emacsclient-0.2.1/pipe-to-emacsclient.el --eval='(pipe-to-emacsclient-batch)'"
+
 alias e='emacsclient -n'
-alias ep="PIPE_TO_EMACSCLIENT_COMMAND=ep emacs --batch -l ~/.emacs.d/elpa/pipe-to-emacsclient-0.1/pipe-to-emacsclient.el --eval='(pipe-to-emacsclient-batch)'"
+alias ep="PIPE_TO_EMACSCLIENT_BUFFER_NAME=*pager* $PAGER"
 alias em="osascript -e 'activate application \"Emacs\"'"
 
 DATETIME="\[\e[0;32m\]\D{%F(%a) %T}\[\e[m\]"
@@ -15,7 +17,7 @@ git-prompt() {
     fi
 }
 export PS1="$DATETIME $CWD \$(git-prompt)\n$ "
-trap 'export PIPE_TO_EMACSCLIENT_COMMAND="$BASH_COMMAND"' DEBUG
+trap 'export PIPE_TO_EMACSCLIENT_BUFFER_NAME="*pager*<$BASH_COMMAND>"' DEBUG
 
 _xdiscard() {
     echo -n "${READLINE_LINE:0:$READLINE_POINT}" | pbcopy
@@ -40,6 +42,10 @@ shopt -s globstar
 
 hex() {
     hexdump -v -e '/1 "%02x"'
+}
+
+emacs-eval() {
+    emacsclient --eval "$(printf '(write-region %s nil "%s" t)' $1 $2)"
 }
 
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
