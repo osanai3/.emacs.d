@@ -1,8 +1,8 @@
 # shellcheck shell=bash
-export PAGER="emacs --batch -l ~/.emacs.d/elpa/pipe-to-emacsclient-0.2.1/pipe-to-emacsclient.el --eval='(pipe-to-emacsclient-batch)'"
+EMACS_PAGER="emacs --batch -l ~/.emacs.d/elpa/pipe-to-emacsclient-0.2.1/pipe-to-emacsclient.el --eval='(pipe-to-emacsclient-batch)'"
 
 alias e='emacsclient -n'
-alias ep="PIPE_TO_EMACSCLIENT_BUFFER_NAME=*pager* $PAGER"
+alias ep="PIPE_TO_EMACSCLIENT_BUFFER_NAME=*pager* $EMACS_PAGER"
 alias em="osascript -e 'activate application \"Emacs\"'"
 
 DATETIME="\[\e[0;32m\]\D{%F(%a) %T}\[\e[m\]"
@@ -51,6 +51,7 @@ emacs-eval() {
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
     source "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh"
     alias e='vterm_cmd find-file'
+    export PAGER=$EMACS_PAGER
 fi
 
 # Local Variables:
