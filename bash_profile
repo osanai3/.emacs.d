@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-export EDITOR=emacsclient
+export EDITOR="emacsclient --tty --alternate-editor="
 export MANWIDTH=80
 export CLICOLOR=""
 export LSCOLORS="gxfxcxdxbxegedabagacad"

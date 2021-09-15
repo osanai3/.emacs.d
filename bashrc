@@ -52,6 +52,7 @@ if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
     source "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh"
     alias e='vterm_cmd find-file'
     export PAGER=$EMACS_PAGER
+    export EDITOR="false"
 fi
 
 # Local Variables:
