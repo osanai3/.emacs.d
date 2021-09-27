@@ -27,6 +27,7 @@
 (global-set-key (kbd "s-}") (lambda () (interactive) (other-window 1)))
 (global-set-key (kbd "s-{") (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "s-r") 'revert-buffer)
+(global-set-key (kbd "s-w") nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
