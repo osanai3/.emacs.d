@@ -36,14 +36,26 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-default nil)
  '(browse-url-browser-function 'eww-browse-url)
+ '(css-indent-offset 2)
  '(desktop-restore-eager 10)
+ '(display-buffer-alist
+   '(("\\*vterm\\*" display-buffer-in-side-window
+      (window-height . 20))
+     ("\\*Embark Actions\\*" display-buffer-in-side-window
+      (side . right)
+      (window-width . 80))
+     ("\\*Help\\*" display-buffer-in-side-window
+      (side . right)
+      (window-width . 80))
+     ("\\*pager\\*" display-buffer-in-side-window
+      (side . right)
+      (window-width . 80))))
  '(help-window-select t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
  '(js2-basic-offset 2)
  '(js2-include-node-externs t)
- '(css-indent-offset 2)
  '(make-backup-files nil)
  '(marginalia-mode t)
  '(neo-autorefresh nil)
@@ -55,7 +67,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
+   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -71,12 +83,7 @@
    '("C-z" "C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"))
  '(whitespace-space-regexp "\\(　+\\)")
  '(whitespace-style '(face tabs spaces trailing empty))
- '(window-sides-vertical t)
- '(display-buffer-alist
-   '(("\\*vterm\\*" display-buffer-in-side-window (window-height . 20))
-     ("\\*Embark Actions\\*" display-buffer-in-side-window (side . right) (window-width . 80))
-     ("\\*Help\\*" display-buffer-in-side-window (side . right) (window-width . 80))
-     ("\\*pager\\*" display-buffer-in-side-window (side . right) (window-width . 80)))))
+ '(window-sides-vertical t))
 
 (defun package-install-from-my-github (package)
   "Install PACKAGE from my github."
@@ -231,6 +238,7 @@
 (add-hook 'emacs-lisp-mode-hook 'flymake-mode)
 
 (add-hook 'typescript-mode-hook 'eglot-ensure)
+(add-hook 'go-mode-hook 'eglot-ensure)
 
 (with-eval-after-load 'eglot
   (defvar eglot-server-programs)
