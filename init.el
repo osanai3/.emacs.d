@@ -207,7 +207,9 @@
 
 (with-eval-after-load 'vterm
   (defvar vterm-mode-map)
-  (define-key vterm-mode-map (kbd "C-g") 'delete-window))
+  (defvar vterm-copy-mode-map)
+  (define-key vterm-mode-map (kbd "C-g") 'delete-window)
+  (define-key vterm-copy-mode-map (kbd "C-g") 'delete-window))
 
 (with-eval-after-load 'flymake
   (defvar flymake-mode-map)
