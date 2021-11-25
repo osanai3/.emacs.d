@@ -94,8 +94,7 @@
   )
 (unless (file-exists-p "~/.emacs.d/elpa")
   (mapc 'package-install-from-my-github '(swap-buffer restore-window pipe-to-emacsclient))
-  (progn (package-refresh-contents) (package-install-sele
-cted-packages))
+  (progn (package-refresh-contents) (package-install-selected-packages))
   )
 
 (require 'server)
@@ -212,17 +211,6 @@ cted-packages))
   (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
   (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
 
-(defun my-switch-to-tab (name)
-  "Switch to the tab by NAME with nice completion."
-  (interactive
-   (let* ((tabs (mapcar (lambda (tab)
-                                 (alist-get 'name tab))
-                               (funcall tab-bar-tabs-function))))
-     (list (completing-read "Switch to tab by name: "
-                            tabs nil t nil nil tabs))))
-  (tab-bar-switch-to-tab name))
-(with-eval-after-load 'tab-bar
-  (define-key tab-prefix-map (kbd "RET") 'my-switch-to-tab))
 
 (add-hook 'emacs-lisp-mode-hook 'flymake-mode)
 
