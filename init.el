@@ -28,6 +28,7 @@
 (global-set-key (kbd "s-{") (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "s-r") 'revert-buffer)
 (global-set-key (kbd "s-w") nil)
+(global-set-key (kbd "C-x C-b") (lambda () (interactive) (ibuffer t)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -49,7 +50,10 @@
       (window-width . 80))
      ("\\*pager\\*" display-buffer-in-side-window
       (side . right)
-      (window-width . 80))))
+      (window-width . 80))
+     ("\\*Ibuffer\\*" display-buffer-in-side-window
+      (side . left)
+      (window-width . 30))))
  '(help-window-select t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -58,16 +62,12 @@
  '(js2-include-node-externs t)
  '(make-backup-files nil)
  '(marginalia-mode t)
- '(neo-autorefresh nil)
- '(neo-show-hidden-files t)
- '(neo-show-updir-line t)
- '(neo-smart-open t)
  '(package-archives
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult projectile neotree pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
+   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command php-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -93,7 +93,8 @@
   )
 (unless (file-exists-p "~/.emacs.d/elpa")
   (mapc 'package-install-from-my-github '(swap-buffer restore-window pipe-to-emacsclient))
-  (progn (package-refresh-contents) (package-install-selected-packages))
+  (progn (package-refresh-contents) (package-install-sele
+cted-packages))
   )
 
 (require 'server)
@@ -175,19 +176,6 @@
 (if (fboundp 'exec-path-from-shell-initialize) (exec-path-from-shell-initialize))
 
 (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
-
-(global-set-key (kbd "C-x C-b") 'neotree-toggle)
-(with-eval-after-load 'neotree
-  (require 'projectile)
-  (defvar neotree-mode-map)
-  (define-key neotree-mode-map "\C-g" 'neotree-hide)
-)
-
-(defadvice neo-open-file (after auto-hide (full-path &optional arg))
-  "Hide neotree after open file."
-  (neotree-hide))
-(ad-activate 'neo-open-file)
-
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
