@@ -28,7 +28,7 @@
 (global-set-key (kbd "s-{") (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "s-r") 'revert-buffer)
 (global-set-key (kbd "s-w") nil)
-(global-set-key (kbd "C-x C-b") (lambda () (interactive) (ibuffer t)))
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -55,6 +55,7 @@
       (side . left)
       (window-width . 30))))
  '(help-window-select t)
+ '(ibuffer-use-other-window t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
