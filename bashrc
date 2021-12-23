@@ -53,6 +53,7 @@ if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
     alias e='vterm_cmd find-file'
     export PAGER=$EMACS_PAGER
     export EDITOR="false"
+    alias ghci="TERM=dump ghci"
 fi
 
 # Local Variables:
