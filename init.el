@@ -68,7 +68,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode sequential-command markdown-mode haskell-mode))
+   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode sequential-command markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -93,7 +93,7 @@
     (with-current-buffer (url-retrieve-synchronously url) (package-install-from-buffer)))
   )
 (unless (file-exists-p "~/.emacs.d/elpa")
-  (mapc 'package-install-from-my-github '(swap-buffer restore-window pipe-to-emacsclient))
+  (mapc 'package-install-from-my-github '(swap-buffer pipe-to-emacsclient))
   (progn (package-refresh-contents) (package-install-selected-packages))
   )
 
@@ -144,9 +144,7 @@
             (require 'sequential-command-config)
             (if (fboundp 'sequential-command-setup-keys) (sequential-command-setup-keys))
             (require 'swap-buffer)
-            (global-set-key (kbd "M-B") 'swap-buffer)
-            (require 'restore-window)
-            (global-set-key (kbd "C-x 1") 'restore-window-delete-other-windows-or-restore-window)))
+            (global-set-key (kbd "M-B") 'swap-buffer)))
 
 (desktop-save-mode 1)
 
