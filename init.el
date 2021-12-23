@@ -68,7 +68,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs key-combo js2-mode sequential-command markdown-mode haskell-mode))
+   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult pipe-to-emacsclient restore-window swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode sequential-command markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -118,13 +118,6 @@
   (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 )
 
-(defun my-key-combo-others ()
-  "Define some shortcuts."
-  (if (fboundp 'key-combo-define-local)
-      (progn
-        (key-combo-define-local (kbd "\\") '("\\" "function "))
-        (key-combo-define-local (kbd "<") '("<" "return ")))))
-
 (with-eval-after-load 'diff-mode
   (set-face-background 'diff-added nil)
   (set-face-foreground 'diff-added "green")
@@ -140,9 +133,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
           (lambda ()
-            (my-key-combo-others)
-            (if (fboundp 'key-combo-define-local) (key-combo-define-local (kbd ">") '(">" " => ")))
-            (if (fboundp 'key-combo-mode) (key-combo-mode 1))
             (local-unset-key (kbd "C-a"))
             (local-unset-key (kbd "C-e"))
             (flymake-mode t)))
