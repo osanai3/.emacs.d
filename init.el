@@ -90,12 +90,10 @@
   "Install PACKAGE from my github."
   (let* ((name (symbol-name package))
         (url (concat "https://raw.githubusercontent.com/osanai3/" name "/master/" name ".el")))
-    (with-current-buffer (url-retrieve-synchronously url) (package-install-from-buffer)))
-  )
+    (with-current-buffer (url-retrieve-synchronously url) (package-install-from-buffer))))
 (unless (file-exists-p "~/.emacs.d/elpa")
   (mapc 'package-install-from-my-github '(swap-buffer pipe-to-emacsclient))
-  (progn (package-refresh-contents) (package-install-selected-packages))
-  )
+  (progn (package-refresh-contents) (package-install-selected-packages)))
 
 (require 'server)
 (unless (server-running-p)
@@ -107,23 +105,20 @@
   (set-face-underline  'whitespace-tab t)
   (set-face-background 'whitespace-space "red")
   (set-face-background 'whitespace-trailing "red")
-  (set-face-background 'whitespace-empty "red")
-)
+  (set-face-background 'whitespace-empty "red"))
 (global-whitespace-mode t)
 
 (show-paren-mode t)
 
 (with-eval-after-load 'dired
   (defvar dired-mode-map)
-  (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
-)
+  (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode))
 
 (with-eval-after-load 'diff-mode
   (set-face-background 'diff-added nil)
   (set-face-foreground 'diff-added "green")
   (set-face-background 'diff-removed nil)
-  (set-face-foreground 'diff-removed "red")
-)
+  (set-face-foreground 'diff-removed "red"))
 
 (global-set-key (kbd "M-R") 'revert-buffer)
 (global-set-key (kbd "M-D") 'make-directory)
@@ -188,9 +183,7 @@
   (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
   (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
 
-
 (add-hook 'emacs-lisp-mode-hook 'flymake-mode)
-
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
 
