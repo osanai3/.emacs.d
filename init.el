@@ -142,9 +142,9 @@
 (add-hook 'after-init-hook
           (lambda ()
             (require 'sequential-command-config)
-            (if (fboundp 'sequential-command-setup-keys) (sequential-command-setup-keys))
-            (require 'swap-buffer)
-            (global-set-key (kbd "M-B") 'swap-buffer)))
+            (if (fboundp 'sequential-command-setup-keys) (sequential-command-setup-keys))))
+
+(global-set-key (kbd "M-B") 'swap-buffer)
 
 (desktop-save-mode 1)
 
