@@ -68,7 +68,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode sequential-command markdown-mode haskell-mode))
+   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -133,11 +133,6 @@
             (flymake-mode t)))
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
-(add-hook 'after-init-hook
-          (lambda ()
-            (require 'sequential-command-config)
-            (if (fboundp 'sequential-command-setup-keys) (sequential-command-setup-keys))))
 
 (global-set-key (kbd "M-B") 'swap-buffer)
 
