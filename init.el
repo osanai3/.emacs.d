@@ -68,7 +68,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode markdown-mode haskell-mode))
+   '(renda go-mode company eglot multi-vterm vterm embark-consult embark marginalia orderless icomplete-vertical consult pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -92,7 +92,7 @@
         (url (concat "https://raw.githubusercontent.com/osanai3/" name "/master/" name ".el")))
     (with-current-buffer (url-retrieve-synchronously url) (package-install-from-buffer))))
 (unless (file-exists-p "~/.emacs.d/elpa")
-  (mapc 'package-install-from-my-github '(swap-buffer pipe-to-emacsclient))
+  (mapc 'package-install-from-my-github '(swap-buffer pipe-to-emacsclient renda))
   (progn (package-refresh-contents) (package-install-selected-packages)))
 
 (require 'server)
@@ -182,11 +182,24 @@
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
 
+(with-eval-after-load 'go-mode
+  (defvar go-mode-map)
+  (if (fboundp 'renda-str)
+      (progn
+        (define-key go-mode-map ":" (renda-str '(":" ":=")))
+        (define-key go-mode-map "!" (renda-str '("!" "!=")))
+        (define-key go-mode-map "<" (renda-str '("<" "return"))))))
+
 (with-eval-after-load 'eglot
   (defvar eglot-server-programs)
   (push '(typescript-mode . ("typescript-language-server" "--stdio")) eglot-server-programs))
 
 (add-hook 'flymake-mode-hook 'company-mode)
+
+(if (fboundp 'renda-pos)
+    (progn
+      (global-set-key (kbd "C-a") (renda-pos '(beginning-of-line beginning-of-buffer)))
+      (global-set-key (kbd "C-e") (renda-pos '(end-of-line end-of-buffer)))))
 
 (provide 'init)
 ;;; init.el ends here
