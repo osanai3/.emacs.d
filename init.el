@@ -190,6 +190,13 @@
         (define-key go-mode-map "!" (renda-str '("!" "!=")))
         (define-key go-mode-map "<" (renda-str '("<" "return"))))))
 
+(with-eval-after-load 'haskell-mode
+  (defvar haskell-mode-map)
+  (if (fboundp 'renda-str)
+      (progn
+        (define-key haskell-mode-map ">" (renda-str '(">" "->" "=>")))
+        (define-key haskell-mode-map "<" (renda-str '("<" "<-"))))))
+
 (with-eval-after-load 'eglot
   (defvar eglot-server-programs)
   (push '(typescript-mode . ("typescript-language-server" "--stdio")) eglot-server-programs))
