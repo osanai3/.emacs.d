@@ -157,7 +157,7 @@
 (define-key icomplete-minibuffer-map "\C-n" 'icomplete-forward-completions)
 (define-key icomplete-minibuffer-map "\C-p" 'icomplete-backward-completions)
 (global-set-key (kbd "M-g M-g") 'consult-goto-line)
-(global-set-key (kbd "C-s") 'consult-isearch)
+(global-set-key (kbd "C-s") 'consult-isearch-history)
 (global-set-key (kbd "C-x b") 'consult-buffer)
 (setq completion-styles '(orderless))
 (global-set-key (kbd "C-;") 'embark-act)
