@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(package-initialize)
-
 (set-language-environment "Japanese")
 (setenv "LANG" "ja_JP.UTF-8")
 (prefer-coding-system 'utf-8)
@@ -91,6 +89,7 @@
   (let* ((name (symbol-name package))
         (url (concat "https://raw.githubusercontent.com/osanai3/" name "/master/" name ".el")))
     (with-current-buffer (url-retrieve-synchronously url) (package-install-from-buffer))))
+
 (unless (file-exists-p "~/.emacs.d/elpa")
   (mapc 'package-install-from-my-github '(swap-buffer pipe-to-emacsclient renda))
   (progn (package-refresh-contents) (package-install-selected-packages)))
