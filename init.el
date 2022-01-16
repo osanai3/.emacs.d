@@ -52,6 +52,8 @@
      ("\\*Ibuffer\\*" display-buffer-in-side-window
       (side . left)
       (window-width . 30))))
+ '(gofmt-args '("-s"))
+ '(gofmt-show-errors 'echo)
  '(help-window-select t)
  '(ibuffer-use-other-window t)
  '(indent-tabs-mode nil)
@@ -187,7 +189,8 @@
       (progn
         (define-key go-mode-map ":" (renda-str '(":" ":=")))
         (define-key go-mode-map "!" (renda-str '("!" "!=")))
-        (define-key go-mode-map "<" (renda-str '("<" "return"))))))
+        (define-key go-mode-map "<" (renda-str '("<" "return")))))
+  (add-hook 'before-save-hook 'gofmt-before-save))
 
 (with-eval-after-load 'haskell-mode
   (defvar haskell-mode-map)
