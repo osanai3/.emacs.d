@@ -54,6 +54,7 @@
       (window-width . 30))))
  '(gofmt-args '("-s"))
  '(gofmt-show-errors 'echo)
+ '(haskell-stylish-on-save t)
  '(help-window-select t)
  '(ibuffer-use-other-window t)
  '(indent-tabs-mode nil)
