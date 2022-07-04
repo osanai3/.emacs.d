@@ -154,7 +154,8 @@
  )
 
 (icomplete-mode)
-(if (fboundp 'icomplete-vertical-mode) (icomplete-vertical-mode))
+;;(if (fboundp 'icomplete-vertical-mode) (icomplete-vertical-mode))
+(fido-vertical-mode)
 (defvar icomplete-minibuffer-map)
 (define-key icomplete-minibuffer-map "\t" 'icomplete-force-complete)
 (define-key icomplete-minibuffer-map "\C-n" 'icomplete-forward-completions)
