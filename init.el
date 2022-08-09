@@ -75,7 +75,7 @@
  '(revert-without-query '(".*"))
  '(scroll-step 1)
  '(sgml-basic-offset 4)
- '(shell-file-name "/usr/local/bin/bash")
+ '(shell-file-name "/opt/homebrew/bin/bash")
  '(tab-width 4)
  '(typescript-indent-level 2)
  '(uniquify-buffer-name-style 'post-forward-angle-brackets nil (uniquify))
@@ -126,6 +126,7 @@
 (global-set-key (kbd "M-D") 'make-directory)
 
 (ffap-bindings)
+(if (boundp 'ffap-url-regexp) (setq ffap-url-regexp nil))
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
@@ -162,7 +163,7 @@
 (define-key icomplete-minibuffer-map "\C-p" 'icomplete-backward-completions)
 (global-set-key (kbd "M-g M-g") 'consult-goto-line)
 ;(global-set-key (kbd "C-s") 'consult-isearch-history)
-;(global-set-key (kbd "C-x b") 'consult-buffer)
+(global-set-key (kbd "C-x b") 'consult-buffer)
 (setq completion-styles '(orderless))
 (global-set-key (kbd "C-;") 'embark-act)
 (with-eval-after-load 'consult
