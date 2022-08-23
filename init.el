@@ -73,6 +73,7 @@
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
+ '(rust-format-on-save t)
  '(scroll-step 1)
  '(sgml-basic-offset 4)
  '(shell-file-name "/opt/homebrew/bin/bash")
