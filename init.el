@@ -52,7 +52,7 @@
      ("\\*Ibuffer\\*" display-buffer-in-side-window
       (side . left)
       (window-width . 30))))
- '(gofmt-args '("-s"))
+ '(gofmt-command "goimports")
  '(gofmt-show-errors 'echo)
  '(haskell-stylish-on-save t)
  '(help-window-select t)
