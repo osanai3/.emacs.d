@@ -69,7 +69,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(protobuf-mode rust-mode renda go-mode company eglot multi-vterm vterm embark marginalia orderless icomplete-vertical pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode markdown-mode haskell-mode))
+   '(quelpa protobuf-mode rust-mode renda go-mode company eglot multi-vterm vterm embark marginalia orderless icomplete-vertical pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -89,15 +89,14 @@
  '(window-combination-limit t)
  '(window-sides-vertical t))
 
-(defun package-install-from-my-github (package)
-  "Install PACKAGE from my github."
-  (let* ((name (symbol-name package))
-        (url (concat "https://raw.githubusercontent.com/osanai3/" name "/master/" name ".el")))
-    (with-current-buffer (url-retrieve-synchronously url) (package-install-from-buffer))))
-
 (unless (file-exists-p "~/.emacs.d/elpa")
   (mapc 'package-install-from-my-github '(swap-buffer pipe-to-emacsclient renda))
-  (progn (package-refresh-contents) (package-install-selected-packages)))
+  (progn (package-refresh-contents) (package-install-selected-packages))
+  (if (fboundp 'quelpa)
+      (progn
+        (quelpa '(swap-buffer :repo "osanai3/swap-buffer" :fetcher github))
+        (quelpa '(pipe-to-emacsclient :repo "osanai3/pipe-to-emacsclient" :fetcher github))
+        (quelpa '(renda :repo "osanai3/renda" :fetcher github)))))
 
 (require 'server)
 (unless (server-running-p)
