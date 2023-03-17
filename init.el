@@ -69,7 +69,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(quelpa protobuf-mode rust-mode renda go-mode company eglot multi-vterm vterm embark marginalia orderless icomplete-vertical pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode markdown-mode haskell-mode))
+   '(corfu quelpa protobuf-mode rust-mode renda go-mode eglot multi-vterm vterm embark marginalia orderless icomplete-vertical pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell restart-emacs js2-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -77,6 +77,7 @@
  '(scroll-step 1)
  '(sgml-basic-offset 4)
  '(shell-file-name "/opt/homebrew/bin/bash")
+ '(tab-always-indent 'complete)
  '(tab-width 4)
  '(typescript-indent-level 2)
  '(uniquify-buffer-name-style 'post-forward-angle-brackets nil (uniquify))
@@ -208,12 +209,12 @@
   (defvar eglot-server-programs)
   (push '(typescript-mode . ("typescript-language-server" "--stdio")) eglot-server-programs))
 
-(add-hook 'flymake-mode-hook 'company-mode)
-
 (if (fboundp 'renda-pos)
     (progn
       (global-set-key (kbd "C-a") (renda-pos '(beginning-of-line beginning-of-buffer)))
       (global-set-key (kbd "C-e") (renda-pos '(end-of-line end-of-buffer)))))
+
+(add-hook 'flymake-mode-hook 'corfu-mode)
 
 (provide 'init)
 ;;; init.el ends here
