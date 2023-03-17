@@ -73,6 +73,7 @@
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
+ '(ruby-align-to-stmt-keywords t)
  '(rust-format-on-save t)
  '(scroll-step 1)
  '(sgml-basic-offset 4)
@@ -181,6 +182,7 @@
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'rust-mode-hook 'eglot-ensure)
+(add-hook 'ruby-mode-hook 'eglot-ensure)
 
 (with-eval-after-load 'go-mode
   (defvar go-mode-map)
