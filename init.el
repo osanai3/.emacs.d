@@ -179,6 +179,7 @@
 (add-hook 'emacs-lisp-mode-hook 'flymake-mode)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
+(add-hook 'rust-mode-hook 'eglot-ensure)
 
 (with-eval-after-load 'go-mode
   (defvar go-mode-map)
@@ -188,6 +189,13 @@
         (define-key go-mode-map "!" (renda-str '("!" "!=")))
         (define-key go-mode-map "<" (renda-str '("<" "return")))))
   (add-hook 'before-save-hook 'gofmt-before-save))
+
+(with-eval-after-load 'rust-mode
+  (defvar rust-mode-map)
+  (if (fboundp 'renda-str)
+      (progn
+        (define-key rust-mode-map "<" (renda-str '("<" "return")))
+        (define-key rust-mode-map ">" (renda-str '(">" "->" "=>"))))))
 
 (with-eval-after-load 'haskell-mode
   (defvar haskell-mode-map)
