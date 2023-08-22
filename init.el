@@ -69,7 +69,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(corfu quelpa protobuf-mode rust-mode renda go-mode eglot multi-vterm vterm embark marginalia orderless icomplete-vertical pipe-to-emacsclient swap-buffer typescript-mode dockerfile-mode yaml-mode purescript-mode exec-path-from-shell js2-mode markdown-mode haskell-mode))
+   '(corfu quelpa protobuf-mode rust-mode renda go-mode eglot multi-vterm vterm embark marginalia orderless icomplete-vertical pipe-to-emacsclient swap-buffer dockerfile-mode yaml-mode purescript-mode exec-path-from-shell js2-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -148,7 +148,7 @@
 
 (if (fboundp 'exec-path-from-shell-initialize) (exec-path-from-shell-initialize))
 
-(add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
+;;(add-to-list 'auto-mode-alist '("\\.tsx$" . tsx-ts-mode))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -179,7 +179,7 @@
   (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
 
 (add-hook 'emacs-lisp-mode-hook 'flymake-mode)
-(add-hook 'typescript-mode-hook 'eglot-ensure)
+;;(add-hook 'typescript-ts-base-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'rust-mode-hook 'eglot-ensure)
 (add-hook 'ruby-mode-hook 'eglot-ensure)
