@@ -92,7 +92,6 @@
  '(window-sides-vertical t))
 
 (unless (file-exists-p "~/.emacs.d/elpa")
-  (mapc 'package-install-from-my-github '(swap-buffer pipe-to-emacsclient renda))
   (progn (package-refresh-contents) (package-install-selected-packages))
   (if (fboundp 'quelpa)
       (progn
