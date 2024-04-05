@@ -69,7 +69,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(corfu quelpa protobuf-mode rust-mode renda go-mode multi-vterm vterm embark marginalia orderless pipe-to-emacsclient swap-buffer dockerfile-mode yaml-mode purescript-mode exec-path-from-shell js2-mode markdown-mode haskell-mode))
+   '(editorconfig corfu quelpa protobuf-mode rust-mode renda go-mode multi-vterm vterm embark marginalia orderless pipe-to-emacsclient swap-buffer dockerfile-mode yaml-mode purescript-mode exec-path-from-shell js2-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -212,6 +212,8 @@
       (global-set-key (kbd "C-e") (renda-pos '(end-of-line end-of-buffer)))))
 
 (add-hook 'flymake-mode-hook 'corfu-mode)
+
+(if (fboundp 'editorconfig-mode) (editorconfig-mode t))
 
 (provide 'init)
 ;;; init.el ends here
