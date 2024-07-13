@@ -69,7 +69,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(editorconfig corfu quelpa protobuf-mode rust-mode renda go-mode multi-vterm vterm embark marginalia orderless pipe-to-emacsclient swap-buffer dockerfile-mode yaml-mode purescript-mode exec-path-from-shell js2-mode markdown-mode haskell-mode))
+   '(reformatter editorconfig corfu quelpa protobuf-mode rust-mode renda go-mode multi-vterm vterm embark marginalia orderless pipe-to-emacsclient swap-buffer dockerfile-mode yaml-mode purescript-mode exec-path-from-shell js2-mode markdown-mode haskell-mode))
  '(recentf-max-saved-items 1000)
  '(require-final-newline t)
  '(revert-without-query '(".*"))
@@ -208,6 +208,12 @@
       (progn
         (define-key haskell-mode-map ">" (renda-str '(">" "->" "=>")))
         (define-key haskell-mode-map "<" (renda-str '("<" "<-"))))))
+
+(with-eval-after-load 'typescript-ts-mode
+  (defvar prettier-format)
+  (if (fboundp 'reformatter-define)
+      (reformatter-define prettier-format :program "npx" :args '("prettier" "--stdin-filepath=a.ts")))
+  (add-hook 'typescript-ts-base-mode-hook 'prettier-format-on-save-mode))
 
 (if (fboundp 'renda-pos)
     (progn
