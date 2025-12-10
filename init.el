@@ -224,5 +224,13 @@
 
 (if (fboundp 'editorconfig-mode) (editorconfig-mode t))
 
+(use-package lean4-mode
+  :commands lean4-mode
+  :vc (:url "https://github.com/leanprover-community/lean4-mode.git"
+            :rev :last-release
+            ;; Or, if you prefer the bleeding edge version of Lean4-Mode:
+            ;; :rev :newest
+            ))
+
 (provide 'init)
 ;;; init.el ends here
